@@ -1,15 +1,15 @@
 
 <div align="center">
 
-<!-- <p align="center">
+<p align="center">
 	<img src="https://i2.wp.com/www.aponia-dental-center.com/fachzahnarztliche-praxis/wp-content/uploads/2014/01/work-in-progress.png?fit=286%2C253" alt="Working Progress">
-</p> -->
+</p>
 
 </div>
 
 
 # Philosophers
-42 Project Aux tests and definitions
+TODO
 
 
 
@@ -19,14 +19,9 @@
 * Semaphore: Some kind of mutex, but with counter
 
 
-## External functions.
+## New external functions.
 | function | Description |
 |-							|-		 |
-|`memset`					| ToDo
-|`printf`					| ToDo
-|`malloc`					| ToDo
-|`free`						| ToDo
-|`write`					| ToDo
 |`usleep`					| ToDo
 |`gettimeofday`				| sys/time.h - get / set time
 |`pthread_create`			| pthread.h - Thread creation

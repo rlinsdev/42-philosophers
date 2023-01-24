@@ -6,17 +6,17 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:32:43 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/23 15:38:00 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 08:33:50 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
 static bool	check_out_of_range(int neg, unsigned long long num, bool *error);
-static int	ft_isdigit(int argument);
-int	ft_isspace(int c);
+static int	ft_isdigit(int c);
+static int	ft_isspace(int c);
 
-int	ft_ato_long(const char *str, bool *error)
+long	ft_ato_long(const char *str, bool *error)
 {
 	unsigned long long	num;
 	int					neg;
@@ -56,12 +56,22 @@ static bool	check_out_of_range(int neg, unsigned long long num, bool *error)
 	return (*error);
 }
 
-static int	ft_isdigit(int argument)
+/**
+ * @brief Check if argument is a valid digit
+ * @param c
+ * @return int. (0) if it's OK
+ */
+static int	ft_isdigit(int c)
 {
-	return (argument >= '0' && argument <= '9');
+	return (c >= '0' && c <= '9');
 }
 
-int	ft_isspace(int c)
+/**
+ * @brief Verify spaces and spacial char
+ * @param c param to verify
+ * @return int. (0) if it's OK
+ */
+static int	ft_isspace(int c)
 {
 	if (c == ' ' || c == '\t' || c == '\n' || c == '\r'
 		|| c == '\v' || c == '\f')

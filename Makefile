@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/01/24 06:49:44 by rlins            ###   ########.fr        #
+#    Updated: 2023/01/24 08:39:37 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ RED 	= \033[0;31m
 
 # Paths
 PATH_SRC 		= ./src/
-PATH_MAIN 		= $(PATH_SRC)main/
 PATH_UTIL 		= $(PATH_SRC)util/
 PATH_OBJS 		= ./objs/
 
@@ -46,13 +45,8 @@ READ_LN		= -l readline
 
 INCLUDE = -I $(INC_PATH)
 
-SRCS =	$(PATH_MAIN)main.c \
-		$(PATH_MAIN)race_cond_mutex.c \
-		$(PATH_MAIN)deadlock.c \
-		$(PATH_MAIN)semaphores.c \
-		$(PATH_MAIN)circular.c \
+SRCS =	$(PATH_SRC)main.c \
 		$(PATH_UTIL)ft_ato_long.c \
-		$(PATH_MAIN)comb1.c \
 
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
@@ -64,7 +58,6 @@ $(NAME): $(OBJS)
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
-	@mkdir -p $(PATH_OBJS)main/
 	@mkdir -p $(PATH_OBJS)util/
 	@$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@
 

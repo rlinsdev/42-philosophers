@@ -6,13 +6,15 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/23 21:03:05 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 08:30:50 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+// TODO: Melhorar isso aqui
+// TODO: Apagar pastas testes
 enum state {
 	eating,
 	thinking,
@@ -38,15 +40,13 @@ enum state {
  * @param envp Environment pointer variable
  * @return int
  */
-int	init(int argc, char **argv, char **envp);
-int	race_cond();
-int	deadlock();
-int	deadlock2();
-int	func_semaphore(void);
-void circle(void);
-int	ft_ato_long(const char *str, bool *error);
-int	comb1();
-
+// int	init(int argc, char **argv, char **envp);
+// int	race_cond();
+// int	deadlock();
+// int	deadlock2();
+// int	func_semaphore(void);
+// void circle(void);
+// int	comb1();
 //eat
 //release_forks
 //sleep
@@ -54,6 +54,21 @@ int	comb1();
 
 /******************************************************************************/
 /*End - Initialization*/
+/******************************************************************************/
+
+/******************************************************************************/
+/*Begin - util*/
+/******************************************************************************/
+
+/**
+ * @brief Asc to Long function.
+ * @param str String to be checked and transformed
+ * @param error Bool variable to check error while calling
+ * @return long value
+ */
+long	ft_ato_long(const char *str, bool *error);
+/******************************************************************************/
+/*End - util*/
 /******************************************************************************/
 
 
