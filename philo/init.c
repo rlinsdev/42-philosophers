@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 12:00:40 by rlins            ###   ########.fr       */
+/*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
+/*   Updated: 2023/01/24 12:22:46 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/**
- * @brief Main Class of program
- * @param argc Arguments Count
- * @param argv Arguments Vector
- * @return int
- */
-int	main(int argc, char **argv)
-{
-	t_dinner	*dinner;
+static long	get_param(char *value);
 
-	dinner = NULL;
-	if (is_valid_args(argc, argv) == false)
-		return (1);
-	init_dinner(argc, argv, dinner);
+t_dinner *init_dinner(int argc, char **argv, t_dinner *dinner)
+{
+	dinner = malloc(sizeof(dinner));
 	if (!dinner)
-		return(EXIT_FAILURE);
-	return (0);
+		return (error_msg_null(ERR_MALLOC, NULL));
+	dinner->nbr_philo = ft_ato_long(argv[1]);
+
+	return (dinner);
 }
+
+
+

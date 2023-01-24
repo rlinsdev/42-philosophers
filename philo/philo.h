@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 10:56:43 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 12:17:33 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 # include <stdbool.h> //boolean
 # include <limits.h> // long_max
 
-# define PARAM_ERROR "Wrong arguments. Check the subject and try again.\n"
+# define ERR_PARAM "Wrong arguments. Check the subject and try again.\n"
+# define ERR_THREAD	"Error: Could not create thread.\n"
+# define ERR_MALLOC	"Error: Could not allocate memory.\n"
+# define ERR_MUTEX	"Error: Could not create mutex.\n"
 
 typedef enum e_state
 {
@@ -53,6 +56,7 @@ typedef struct s_dinner
 	long		time_to_sleep;
 	long		time_must_eat;
 	t_philo		*philo;
+	bool		dinner_stop;
 }				t_dinner;
 
 /**
@@ -66,10 +70,9 @@ bool	is_valid_args(int argc, char **argv);
 /**
  * @brief Asc to Long function.
  * @param str String to be checked and transformed
- * @param error Bool variable to check error while calling
  * @return long value
  */
-long	ft_ato_long(const char *str, bool *error);
+long	ft_ato_long(const char *str);
 
 /**
  * @brief Check if argument is a valid digit
@@ -77,5 +80,21 @@ long	ft_ato_long(const char *str, bool *error);
  * @return boolean
  */
 bool	ft_isdigit(int c);
+
+/**
+ * @brief Initialize the structure Dinner
+ * @param argc Arg Count
+ * @param argv Arg Vectors
+ * @param dinner Dinner structure by param
+ * @return t_dinner* Return this structure or null if error.
+ */
+t_dinner *init_dinner(int argc, char **argv, t_dinner *dinner);
+
+/**
+ * @brief Handle msg error. Create Malloc / Mutex and Thread
+ * @param str String with error message
+ * @param dinner Object to be cleaned
+ */
+void	*error_msg_null(char *str, t_dinner *dinner);
 
 #endif

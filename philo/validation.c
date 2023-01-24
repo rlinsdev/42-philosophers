@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:26:29 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 10:26:14 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 12:20:21 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ bool	is_valid_args(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
 	{
-		printf(PARAM_ERROR);
+		printf(ERR_PARAM);
 		return (false);
 	}
 	if (is_valid_input(argc, argv) == false)
-	{
 		return (false);
-	}
 	return (true);
 }
 
@@ -37,14 +35,22 @@ bool	is_valid_args(int argc, char **argv)
  */
 static bool	is_valid_input(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	long	value;
 
+	value = 0;
 	i = 1;
 	while (i < argc)
 	{
 		if (is_only_digit(argv[i]) == false)
 		{
 			printf("Invalid input in [%s]. Only digit accepted.\n", argv[i]);
+			return (false);
+		}
+		value = ft_ato_long(argv[i]);
+		if (argv[i] < 0 || value > LONG_MAX)
+		{
+			printf("Invalid input in [%s]. Negative or so long.\n", argv[i]);
 			return (false);
 		}
 		i++;
