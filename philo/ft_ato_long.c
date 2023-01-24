@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:32:43 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 10:17:13 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 10:25:26 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static bool	check_out_of_range(int neg, unsigned long long num, bool *error)
 
 bool	ft_isdigit(int c)
 {
-	bool result;
+	bool	result;
+
 	result = (c >= '0' && c <= '9');
 	return (result);
 }

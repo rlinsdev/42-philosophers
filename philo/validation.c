@@ -6,14 +6,14 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:26:29 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 10:19:41 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 10:26:14 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static bool is_valid_input(int argc, char **argv);
-static bool is_only_digit(char *arg);
+static bool	is_valid_input(int argc, char **argv);
+static bool	is_only_digit(char *arg);
 
 bool	is_valid_args(int argc, char **argv)
 {
@@ -26,7 +26,6 @@ bool	is_valid_args(int argc, char **argv)
 	{
 		return (false);
 	}
-
 	return (true);
 }
 
@@ -36,7 +35,7 @@ bool	is_valid_args(int argc, char **argv)
  * @param argv arg vector
  * @return boolean
  */
-static bool is_valid_input(int argc, char **argv)
+static bool	is_valid_input(int argc, char **argv)
 {
 	int	i;
 
@@ -58,9 +57,9 @@ static bool is_valid_input(int argc, char **argv)
  * @param str - string argument
  * @return boolean
  */
-static bool is_only_digit(char *str)
+static bool	is_only_digit(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

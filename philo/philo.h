@@ -6,21 +6,12 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 10:17:11 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 10:26:54 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-
-// TODO: Melhorar isso aqui
-// TODO: Apagar pastas testes
-enum state {
-	eating,
-	thinking,
-	sleeping,
-	hungry,
-};
 
 # include <stdio.h> // Printf
 # include <stdlib.h> // Malloc

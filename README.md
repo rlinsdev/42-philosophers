@@ -61,3 +61,6 @@ $ ./philo 5	86400000 3600000 28800000 2
 [Dining philosophers problem 3](https://www.ecb.torontomu.ca/~courses/coe518/Labs/lab4/lisi.edu-dining-Philosopherecture8.pdf)
 
 [Dining philosophers problem 4](https://www.youtube.com/watch?v=knJ4MHWPIwk)
+
+
+
