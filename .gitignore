@@ -1,2 +1,2 @@
-*.o
-/philo/objs/
+philo/obj/
+philo/philo
