@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 12:00:40 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 12:31:52 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int argc, char **argv)
 		return (1);
 	init_dinner(argc, argv, dinner);
 	if (!dinner)
-		return(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	return (0);
 }

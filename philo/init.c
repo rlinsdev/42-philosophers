@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 12:31:12 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 12:32:37 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static long	get_param(char *value);
 
-t_dinner *init_dinner(int argc, char **argv, t_dinner *dinner)
+t_dinner	*init_dinner(int argc, char **argv, t_dinner *dinner)
 {
 	// TODO: Must Freelá este cara.
 	dinner = malloc(sizeof(dinner));
@@ -27,10 +27,6 @@ t_dinner *init_dinner(int argc, char **argv, t_dinner *dinner)
 	dinner->time_must_eat = -1;
 	if (argc == 6)
 		dinner->time_must_eat = ft_ato_long(argv[5]);
-
 	dinner->dinner_stop = false;
 	return (dinner);
 }
-
-
-
