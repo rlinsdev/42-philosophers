@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 09:37:45 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 10:17:11 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,12 @@ bool	is_valid_args(int argc, char **argv);
  * @return long value
  */
 long	ft_ato_long(const char *str, bool *error);
+
+/**
+ * @brief Check if argument is a valid digit
+ * @param c
+ * @return boolean
+ */
+bool	ft_isdigit(int c);
 
 #endif

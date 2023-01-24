@@ -6,14 +6,13 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:32:43 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 09:15:38 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 10:17:13 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static bool	check_out_of_range(int neg, unsigned long long num, bool *error);
-static int	ft_isdigit(int c);
 static int	ft_isspace(int c);
 
 long	ft_ato_long(const char *str, bool *error)
@@ -56,14 +55,11 @@ static bool	check_out_of_range(int neg, unsigned long long num, bool *error)
 	return (*error);
 }
 
-/**
- * @brief Check if argument is a valid digit
- * @param c
- * @return int. (0) if it's OK
- */
-static int	ft_isdigit(int c)
+bool	ft_isdigit(int c)
 {
-	return (c >= '0' && c <= '9');
+	bool result;
+	result = (c >= '0' && c <= '9');
+	return (result);
 }
 
 /**
