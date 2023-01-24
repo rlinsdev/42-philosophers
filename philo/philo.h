@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 10:26:54 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 10:46:21 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,34 @@
 # include <limits.h> // long_max
 
 # define PARAM_ERROR "Wrong arguments. Check the subject and try again.\n"
+
+typedef enum e_state
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	DEAD,
+	END_DINNER
+}	t_state;
+
+typedef struct s_fork
+{
+	pthread_mutex_t	lock;
+}					t_fork;
+
+typedef struct s_philo
+{
+	pthread_t	thread;
+	long		id;
+	t_fork		r_fork;
+	t_fork		l_fork;
+}				t_philo;
+
+typedef struct s_dinner
+{
+	long		nbr_philo;
+	t_philo		*philo;
+}				t_dinner;
 
 /**
  * @brief First method in project.
