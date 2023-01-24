@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 09:15:20 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 09:54:12 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
  */
 int	main(int argc, char **argv, char **envp)
 {
-	// if (argc != 5 && argc != 6)
-	// {
-	// 	printf("Error in arguments AAAAA\n");
-	// 	exit(1);
-	// }
+	if (is_valid_args(argc, argv) == false)
+	{
+		return (1);
+	}
+	
 	// else
 	// {
 	// 	bool error = false;

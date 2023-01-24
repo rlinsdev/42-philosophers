@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/01/24 09:22:15 by rlins            ###   ########.fr        #
+#    Updated: 2023/01/24 09:52:13 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ OBJS	=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 CC = gcc -pthread
 
 # Compilation flags
-# CFLAGS = -g -fsanitize=thread # -fsanitize=thread = Warning datarace. This don't work with valgrind
-CFLAGS = -g # -fsanitize=thread = Warning datarace
-# CFLAGS = -g -Wall -Werror -Wextra
+# CFLAGS = -g -fsanitize=thread # Warning datarace. Don't work with valgrind
+CFLAGS = -g
+# CFLAGS = -g -Wall -Werror -Wextra # TODO: Descomentar
 
 #Chedk Leak memory
  LEAK = valgrind --leak-check=full --show-leak-kinds=all \
@@ -35,12 +35,11 @@ CFLAGS = -g # -fsanitize=thread = Warning datarace
 # LEAK = --tool=helgrind
 # LEAK = --tool=drd
 
-RM			= rm -rf
+RM		= rm -rf
 
-SRCS =	main.c \
-		ft_ato_long.c \
+SRCS 	= main.c ft_ato_long.c validation.c
 
-OBJS	=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
+OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -71,8 +70,10 @@ bonus: all
 
 rebonus: fclean all
 
-run:
-	make re && ./philo "5" "86400000" "3600000" "28800000" "2"
+# run:
+# 	make re && ./philo "5" "86400000" "3600000" "28800000" "2"
+run: $(NAME)
+	@./$(NAME) 4 410 200 200 8
 
 valgrind:
 	$(LEAK) ./philo "5" "86400000" "3600000" "28800000" "2"

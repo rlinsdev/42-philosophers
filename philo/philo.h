@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 08:30:50 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/24 09:37:45 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,35 +30,15 @@ enum state {
 # include <stdbool.h> //boolean
 # include <limits.h> // long_max
 
-/******************************************************************************/
-/*Begin - Initialization*/
-/******************************************************************************/
+# define PARAM_ERROR "Wrong arguments. Check the subject and try again.\n"
+
 /**
  * @brief First method in project.
  * @param argc Arguments count
  * @param argv Arguments Vector
- * @param envp Environment pointer variable
- * @return int
+ * @return boolean
  */
-// int	init(int argc, char **argv, char **envp);
-// int	race_cond();
-// int	deadlock();
-// int	deadlock2();
-// int	func_semaphore(void);
-// void circle(void);
-// int	comb1();
-//eat
-//release_forks
-//sleep
-//think
-
-/******************************************************************************/
-/*End - Initialization*/
-/******************************************************************************/
-
-/******************************************************************************/
-/*Begin - util*/
-/******************************************************************************/
+bool	is_valid_args(int argc, char **argv);
 
 /**
  * @brief Asc to Long function.
@@ -67,9 +47,5 @@ enum state {
  * @return long value
  */
 long	ft_ato_long(const char *str, bool *error);
-/******************************************************************************/
-/*End - util*/
-/******************************************************************************/
-
 
 #endif

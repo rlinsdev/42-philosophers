@@ -8,7 +8,7 @@
 			"name": "Program", //I named it Pusk because i can
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/philo", //path to your programs exe and exe name
+			"program": "${workspaceFolder}/philo/philo", //path to your programs exe and exe name
 			"args": ["5", "86400000","3600000", "28800000", "2"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
@@ -28,7 +28,7 @@
 			"name": "gdb",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/philo",
+			"program": "${workspaceRoot}/philo/philo",
 			"args": ["5", "86400000", "3600000", "28800000", "2"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
