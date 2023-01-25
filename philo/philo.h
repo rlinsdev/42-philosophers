@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 08:08:14 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/25 10:11:54 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum e_state
 	SLEEPING,
 	THINKING,
 	DEAD,
-	END_DINNER
+	END_table
 }	t_state;
 
 typedef struct s_fork
@@ -48,7 +48,7 @@ typedef struct s_philo
 	t_fork		l_fork;
 }				t_philo;
 
-typedef struct s_dinner
+typedef struct s_table
 {
 	long		nbr_philo;
 	long		time_to_die;
@@ -56,8 +56,8 @@ typedef struct s_dinner
 	long		time_to_sleep;
 	long		time_must_eat;
 	t_philo		**philo;
-	bool		dinner_stop;
-}				t_dinner;
+	bool		table_stop;
+}				t_table;
 
 /**
  * @brief First method in project.
@@ -82,19 +82,19 @@ long	ft_ato_long(const char *str);
 bool	ft_isdigit(int c);
 
 /**
- * @brief Initialize the structure Dinner
+ * @brief Initialize the structure table
  * @param argc Arg Count
  * @param argv Arg Vectors
- * @param dinner Dinner structure by param
- * @return t_dinner* Return this structure or null if error.
+ * @param table table structure by param
+ * @return t_table* Return this structure or null if error.
  */
-t_dinner *init_dinner(int argc, char **argv, t_dinner *dinner);
+t_table *init_table(int argc, char **argv, t_table *table);
 
 /**
  * @brief Handle msg error. Create Malloc / Mutex and Thread
  * @param str String with error message
- * @param dinner Object to be cleaned
+ * @param table Object to be cleaned
  */
-void	*error_msg_null(char *str, t_dinner *dinner);
+void	*error_msg_null(char *str, t_table *table);
 
 #endif
