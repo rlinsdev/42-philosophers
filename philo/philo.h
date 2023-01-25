@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 10:11:54 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/25 10:34:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define ERR_MALLOC	"Error: Could not allocate memory.\n"
 # define ERR_MUTEX	"Error: Could not create mutex.\n"
 
+typedef struct s_table	t_table;
+
 typedef enum e_state
 {
 	EATING,
@@ -44,8 +46,14 @@ typedef struct s_philo
 {
 	pthread_t	thread;
 	long		id;
-	t_fork		r_fork;
-	t_fork		l_fork;
+	/*
+	// t_fork		r_fork;
+	// t_fork		l_fork;
+	*/
+	int		r_fork;
+	int		l_fork;
+	t_table		*table; // To Access data while thread running
+	long		nbr_meals_done;
 }				t_philo;
 
 typedef struct s_table
