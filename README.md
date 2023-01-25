@@ -2,21 +2,25 @@
 <div align="center">
 
 <p align="center">
-	<img src="https://i2.wp.com/www.aponia-dental-center.com/fachzahnarztliche-praxis/wp-content/uploads/2014/01/work-in-progress.png?fit=286%2C253" alt="Working Progress">
+
+<!-- <img src="https://game.42sp.org.br/static/assets/achievements/philosophersn.png" alt="Philosophers"> -->
+<img src="https://i2.wp.com/www.aponia-dental-center.com/fachzahnarztliche-praxis/wp-content/uploads/2014/01/work-in-progress.png?fit=286%2C253" alt="Working Progress">
 </p>
 
 </div>
 
 
 # Philosophers:
-TODO
+In this project, we must solve the classic problem *diner philosopher* problem
 
 
 
-## Definitions:
+## Definitions / Infos:
 * Data Races: Occur when multiple tasks or threads access a shared resource without sufficient protections
 * Mutex: MUTual EXclusion - Protect the execution again other threads running at the same time.
-* Semaphore: Some kind of mutex, but with counter
+* Semaphore: Some kind of mutex, but with counter (Just bonus)
+* Each philosopher is a thread and each fork is protected by a mutex.
+* There are as many forks as philosophers.
 
 ## Parameters:
 * **number_of_philosophers**: The number of philosophers and also the number of forks.
