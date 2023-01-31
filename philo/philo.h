@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 17:01:40 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 17:24:45 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdio.h> // Printf
 # include <stdlib.h> // Malloc
 # include <pthread.h> //pthread_*, mutex
-# include <unistd.h> // Sleep
-# include <semaphore.h> // semaphore
+# include <unistd.h> // usleep
+// # include <semaphore.h> // semaphore
 # include <stdbool.h> //boolean
 # include <limits.h> // long_max
 # include <sys/time.h> // gettimeofday
@@ -52,10 +52,6 @@ typedef struct s_philo
 {
 	pthread_t	thread;
 	long		id;
-	/*
-	// t_fork		r_fork;
-	// t_fork		l_fork;
-	*/
 	int		r_fork;
 	int		l_fork;
 	t_table		*table; // To Access data while thread running
@@ -64,14 +60,15 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	time_t		start_dinning;
-	long		nbr_philo;
-	long		time_to_die;
-	long		time_to_eat;
-	long		time_to_sleep;
-	long		time_must_eat;
-	t_philo		**philo;
-	bool		dinner_end;
+	time_t			start_dinning;
+	long			nbr_philo;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	long			time_must_eat;
+	t_philo			**philo;
+	bool			dinner_end;
+	pthread_mutex_t log_lock;
 }				t_table;
 
 /**

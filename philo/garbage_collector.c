@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:52:31 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 16:56:50 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 17:31:31 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*free_table(t_table *table)
 	if (table->philo)
 	{
 		i = 0;
-		while (table->philo[i])
+		while (i < table->nbr_philo)
 		{
 			free(table->philo[i]);
 			i++;
