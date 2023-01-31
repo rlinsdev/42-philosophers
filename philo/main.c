@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 10:53:58 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 11:54:21 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static void start_dinning(t_table *table);
  */
 int	main(int argc, char **argv)
 {
-	printf("%d\n", datetime_now());
-	// wait 1 second
-	sleep(1);
-	printf("%d\n", datetime_now());
+	// printf("%d\n", datetime_now());
+	// // wait 1 second
+	// sleep(1);
+	// printf("%d\n", datetime_now());
 
 
-	return (0);
+	// return (0);
 
 	t_table	*table;
 
@@ -48,7 +48,14 @@ int	main(int argc, char **argv)
 // Subject: One or more philosophers sit at a round table
 static void end_dinning(t_table *table)
 {
+	int	i;
 
+	i = 0;
+	while (i < table->nbr_philo)
+	{
+		pthread_join(table->philo[i]->thread, NULL);
+		i++;
+	}
 }
 
 static void start_dinning(t_table *table)
