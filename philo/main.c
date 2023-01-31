@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 09:42:40 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 10:04:31 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 }
 
 //TODO: Não permitir numeros negativos de Philo. Talvez dos oturos params tb.
+// Subject: One or more philosophers sit at a round table
 static void end_dinning(t_table *table)
 {
 
