@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 10:34:01 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/25 10:41:15 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ t_table	*init_table(int argc, char **argv, t_table *table)
 	table->time_must_eat = -1;
 	if (argc == 6)
 		table->time_must_eat = ft_ato_long(argv[5]);
-	table->table_stop = false;
+	table->dinner_end = false;
 	table->philo = init_philo(table);
+	if (table->philo == NULL)
+		return (NULL);
 	return (table);
 }
 

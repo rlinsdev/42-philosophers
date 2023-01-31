@@ -76,5 +76,7 @@ $ ./philo 5	86400000 3600000 28800000 2
 
 [Dining philosophers problem 4](https://www.youtube.com/watch?v=knJ4MHWPIwk)
 
+[Geeks for geeks](https://www.geeksforgeeks.org/multithreading-in-c/)
+
 
 

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 10:34:55 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/25 10:40:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_table
 	long		time_to_sleep;
 	long		time_must_eat;
 	t_philo		**philo;
-	bool		table_stop;
+	bool		dinner_end;
 }				t_table;
 
 /**
