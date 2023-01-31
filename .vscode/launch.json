@@ -9,8 +9,8 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/philo/philo", //path to your programs exe and exe name
-			"args": ["4", "800","200", "200", "5"],
-			// "args": ["5", "86400000","3600000", "28800000", "2"],
+			// "args": ["4", "800","200", "200", "5"],
+			"args": ["1", "4100","2000", "2000", "2"], // 1 Philo
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
@@ -30,7 +30,8 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/philo/philo",
-			"args": ["4", "800","200", "200", "5"],
+			// "args": ["4", "800","200", "200", "5"],
+			"args": ["1", "4100","2000", "2000", "2"], // 1 Philo
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
 			"environment": [],

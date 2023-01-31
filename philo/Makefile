@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/01/24 12:23:03 by rlins            ###   ########.fr        #
+#    Updated: 2023/01/31 09:37:53 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CFLAGS = -g
 
 RM		= rm -rf
 
-SRCS 	= main.c ft_ato_long.c validation.c init.c error.c
+SRCS 	= main.c ft_ato_long.c validation.c init.c error.c routines.c
 
 OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
@@ -73,7 +73,8 @@ rebonus: fclean all
 # run:
 # 	make re && ./philo "5" "86400000" "3600000" "28800000" "2"
 run: $(NAME)
-	@./$(NAME) 4 410 200 200 8
+# 1 philo
+	@./$(NAME) 1 4100 2000 2000 2
 
 valgrind:
 	$(LEAK) ./philo "5" "86400000" "3600000" "28800000" "2"
