@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 11:02:37 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 16:59:37 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static t_philo **init_philo(t_table *table);
 t_table	*init_table(int argc, char **argv)
 {
 	t_table *table;
-	// TODO: Must Freelá este cara.
 	table = malloc(sizeof(table));
 	if (!table)
 		return (error_msg_null(ERR_MALLOC, NULL));
@@ -44,13 +43,13 @@ static t_philo **init_philo(t_table *table)
 
 	i = 0;
 	philos = malloc(sizeof(t_philo) * table->nbr_philo);
-	if (philos == NULL) // TODO: Must Freelá este cara.
+	if (philos == NULL)
 		return (error_msg_null(ERR_MALLOC, NULL));
 
 	while (i < table->nbr_philo)
 	{
 		philos[i] = malloc(sizeof(t_philo));
-		if (philos[i] == NULL) // TODO: Must Freelá este cara.
+		if (philos[i] == NULL)
 			return (error_msg_null(ERR_MALLOC, NULL));
 		philos[i]->id = i;
 		philos[i]->table = table;

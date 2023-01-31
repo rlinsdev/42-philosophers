@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/01/31 13:26:20 by rlins            ###   ########.fr        #
+#    Updated: 2023/01/31 16:58:48 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ CFLAGS = -g -D PRETTY=1
 RM		= rm -rf
 
 SRCS 	= main.c ft_ato_long.c validation.c init.c error.c routines.c time.c \
-			output.c
+			output.c garbage_collector.c
 
 OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 

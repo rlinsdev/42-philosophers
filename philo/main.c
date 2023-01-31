@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 11:54:21 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 16:59:07 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	start_dinning(table);
 	end_dinning(table);
+	free_table(table);
 	return (EXIT_SUCCESS);
 }
 
