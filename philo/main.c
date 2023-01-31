@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 10:04:31 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 10:53:58 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ static void start_dinning(t_table *table);
  */
 int	main(int argc, char **argv)
 {
+	printf("%d\n", datetime_now());
+	// wait 1 second
+	sleep(1);
+	printf("%d\n", datetime_now());
+
+
+	return (0);
+
 	t_table	*table;
 
 	table = NULL;

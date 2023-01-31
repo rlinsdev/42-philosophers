@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 09:42:53 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 10:53:28 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <semaphore.h> // semaphore
 # include <stdbool.h> //boolean
 # include <limits.h> // long_max
+# include <sys/time.h> // gettimeofday
 
 # define ERR_PARAM "Wrong arguments. Check the subject and try again.\n"
 # define ERR_THREAD	"Error: Could not create thread.\n"
@@ -111,6 +112,20 @@ t_table *init_table(int argc, char **argv);
  */
 void	*error_msg_null(char *str, t_table *table);
 
+/**
+ * @brief
+ *
+ * @return long
+ */
+int datetime_now();
+
+/**
+ * @brief Get the time ms object
+ *
+ * @param start_dinning
+ * @return time_t
+ */
+int	get_time_ms(int start_dinning);
 
 
 #endif
