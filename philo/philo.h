@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 10:53:28 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 11:37:18 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ typedef struct s_table	t_table;
 
 typedef enum e_state
 {
-	EATING,
-	SLEEPING,
-	THINKING,
-	DEAD,
-	END_table
+	S_EATING,
+	S_SLEEPING,
+	S_THINKING,
+	S_DEAD,
+	S_FORK,
+	S_END_DINNING
 }	t_state;
 
 typedef struct s_fork
@@ -59,6 +60,7 @@ typedef struct s_philo
 
 typedef struct s_table
 {
+	time_t		start_dinning;
 	long		nbr_philo;
 	long		time_to_die;
 	long		time_to_eat;
@@ -113,19 +115,25 @@ t_table *init_table(int argc, char **argv);
 void	*error_msg_null(char *str, t_table *table);
 
 /**
- * @brief
- *
- * @return long
+ * @brief Will return the DateTime now, but in milliseconds
+ * @return integer value
  */
 int datetime_now();
 
 /**
- * @brief Get the time ms object
- *
+ * @brief Will subtract the current DatetimeNow, from start dinning to log
+ * the time in program
  * @param start_dinning
  * @return time_t
  */
 int	get_time_ms(int start_dinning);
+
+/**
+ * @brief Log the status of current philo
+ * @param philo Philosopher structure
+ * @param status Status to log
+ */
+void log_status(t_philo *philo, t_state status);
 
 
 #endif
