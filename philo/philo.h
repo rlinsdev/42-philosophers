@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 10:40:27 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 09:42:53 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ typedef struct s_table
 }				t_table;
 
 /**
+ * @brief The threads will call this method. Will start all the routines.
+ * Sleep / think / eat
+ * @param data - Philosopher structure
+ */
+void *dinning_routines(void *data);
+
+/**
  * @brief First method in project.
  * @param argc Arguments count
  * @param argv Arguments Vector
@@ -93,10 +100,9 @@ bool	ft_isdigit(int c);
  * @brief Initialize the structure table
  * @param argc Arg Count
  * @param argv Arg Vectors
- * @param table table structure by param
  * @return t_table* Return this structure or null if error.
  */
-t_table *init_table(int argc, char **argv, t_table *table);
+t_table *init_table(int argc, char **argv);
 
 /**
  * @brief Handle msg error. Create Malloc / Mutex and Thread
@@ -104,5 +110,7 @@ t_table *init_table(int argc, char **argv, t_table *table);
  * @param table Object to be cleaned
  */
 void	*error_msg_null(char *str, t_table *table);
+
+
 
 #endif

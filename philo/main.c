@@ -6,11 +6,14 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 10:11:54 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 09:42:40 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static void end_dinning(t_table *table);
+static void start_dinning(t_table *table);
 
 /**
  * @brief Main Class of program
@@ -24,9 +27,30 @@ int	main(int argc, char **argv)
 
 	table = NULL;
 	if (is_valid_args(argc, argv) == false)
-		return (1);
-	init_table(argc, argv, table);
+		return (EXIT_FAILURE);
+	table = init_table(argc, argv);
 	if (!table)
 		return (EXIT_FAILURE);
-	return (0);
+	start_dinning(table);
+	end_dinning(table);
+	return (EXIT_SUCCESS);
+}
+
+//TODO: Não permitir numeros negativos de Philo. Talvez dos oturos params tb.
+static void end_dinning(t_table *table)
+{
+
+}
+
+static void start_dinning(t_table *table)
+{
+	int i;
+
+	i = 0;
+	while (i < table->nbr_philo)
+	{
+		pthread_create(&table->philo[i]->thread, NULL, &dinning_routines,
+			 table->philo[i]);
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/25 10:41:15 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 09:43:50 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static void grab_forks(t_philo *philo);
 static t_philo **init_philo(t_table *table);
 
-t_table	*init_table(int argc, char **argv, t_table *table)
+t_table	*init_table(int argc, char **argv)
 {
+	t_table *table;
 	// TODO: Must Freelá este cara.
 	table = malloc(sizeof(table));
 	if (!table)
@@ -61,7 +62,7 @@ static t_philo **init_philo(t_table *table)
 
 /**
  * @brief
- *
+ * TODO: Get it better.
  * @param philo
  */
 static void grab_forks(t_philo *philo)
