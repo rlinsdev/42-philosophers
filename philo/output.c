@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 17:32:30 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 20:05:19 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static char *parse_format_pretty(t_state status);
 
 void log_status(t_philo *philo, t_state status)
 {
-	pthread_mutex_lock(&philo->table->log_lock);
 	if (PRETTY == 1)
 		printf(parse_format_pretty(status),
 			get_time_ms(philo->table->start_dinning), philo->id + 1,
@@ -25,7 +24,6 @@ void log_status(t_philo *philo, t_state status)
 	else
 		printf("%i %ld %s\n", get_time_ms(philo->table->start_dinning),
 		philo->id + 1, parse_status(status));
-	pthread_mutex_unlock(&philo->table->log_lock);
 }
 
 /**

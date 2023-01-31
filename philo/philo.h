@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 17:24:45 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 20:08:18 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_table
 	long			time_must_eat;
 	t_philo			**philo;
 	bool			dinner_end;
-	pthread_mutex_t log_lock;
+	pthread_mutex_t log_lock; // TODO: Rever se precis adeste cara...
 }				t_table;
 
 /**
@@ -150,5 +150,12 @@ void	thread_sleep(t_table *table, time_t duration);
  * @return void*
  */
 void	*free_table(t_table *table);
+
+/**
+ * @brief
+ *
+ * @param table
+ */
+// void free_mutex(t_table *table);
 
 #endif

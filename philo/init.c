@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 18:11:46 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 20:06:48 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ static t_philo **init_philo(t_table *table)
  */
 static bool init_mutex(t_table *table)
 {
-	if(pthread_mutex_init(&table->log_lock, 0) != 0)
-		return (error_msg_null(ERR_MUTEX, NULL));
+	// if (pthread_mutex_init(&table->log_lock, 0) != 0)
+	// 	return (error_msg_null(ERR_MUTEX, NULL));
 
 	return (true);
 }
