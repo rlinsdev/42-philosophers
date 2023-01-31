@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 16:59:37 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 18:11:46 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void grab_forks(t_philo *philo);
 static t_philo **init_philo(t_table *table);
+static bool init_mutex(t_table *table);
 
 t_table	*init_table(int argc, char **argv)
 {
@@ -32,6 +33,8 @@ t_table	*init_table(int argc, char **argv)
 	table->start_dinning = datetime_now();
 	table->philo = init_philo(table);
 	if (table->philo == NULL)
+		return (NULL);
+	if(init_mutex(table) == false)
 		return (NULL);
 	return (table);
 }
@@ -58,6 +61,20 @@ static t_philo **init_philo(t_table *table)
 		i++;
 	}
 	return (philos);
+}
+
+/**
+ * @brief Initialize Mutex used in project
+ * @param tablet tbl structure
+ * @return true - success
+ * @return false - error
+ */
+static bool init_mutex(t_table *table)
+{
+	if(pthread_mutex_init(&table->log_lock, 0) != 0)
+		return (error_msg_null(ERR_MUTEX, NULL));
+
+	return (true);
 }
 
 /**
