@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 11:37:18 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 13:26:11 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define ERR_THREAD	"Error: Could not create thread.\n"
 # define ERR_MALLOC	"Error: Could not allocate memory.\n"
 # define ERR_MUTEX	"Error: Could not create mutex.\n"
+
+# ifndef PRETTY
+#  define PRETTY 0
+# endif
 
 typedef struct s_table	t_table;
 

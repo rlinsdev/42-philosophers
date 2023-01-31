@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/01/31 10:20:29 by rlins            ###   ########.fr        #
+#    Updated: 2023/01/31 13:26:20 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ CC = gcc -pthread
 
 # Compilation flags
 # CFLAGS = -g -fsanitize=thread # Warning datarace. Don't work with valgrind
-CFLAGS = -g
+CFLAGS = -g -D PRETTY=1
+# CFLAGS = -g
 # CFLAGS = -g -Wall -Werror -Wextra # TODO: Descomentar
 
 #Chedk Leak memory
