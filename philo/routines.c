@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 13:38:10 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 13:52:31 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void *dinning_routines(void *data)
 }
 
 /**
- * @brief Handle single Philo. Grab the fork and wait until die
+ * @brief Handle single Philo. Grab the fork and wait until die.
+ * Philos are not allowed to eat with just one fork
  * @param philo
  */
 static void *lonely_philo(t_philo *philo)
@@ -36,9 +37,21 @@ static void *lonely_philo(t_philo *philo)
 	if (PRETTY == 1)
 		printf("%s \t%s\t%s\n","[Milliseconds]", "[Philo Number]", "[Action]");
 	log_status(philo, S_FORK);
-	//TODO : Waiting...
+	thread_sleep(philo->table, philo->table->time_to_die);
 	log_status(philo, S_DEAD);
 
 	return (NULL);
+}
+
+void thread_sleep(t_table *table, time_t duration)
+{
+	time_t time_wake_up;
+
+	time_wake_up = datetime_now() + duration;
+
+	while (datetime_now() < time_wake_up)
+	{
+		usleep(100);
+	}
 }
 

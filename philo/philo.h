@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 13:26:11 by rlins            ###   ########.fr       */
+/*   Updated: 2023/01/31 13:57:38 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,12 @@ int	get_time_ms(int start_dinning);
  */
 void log_status(t_philo *philo, t_state status);
 
+/**
+ * @brief Sleep is not allowed. This wil simulate it.
+ * Handle the time to sleep the thread
+ * @param table
+ * @param duration Milliseconds to thread sleep
+ */
+void thread_sleep(t_table *table, time_t duration);
 
 #endif

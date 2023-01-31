@@ -36,7 +36,7 @@ philosopher dies.
 ## New external functions.
 | function | Description |
 |-							|-		 |
-|`usleep`					| ToDo
+|`usleep`					| suspend execution for microsecond intervals
 |`gettimeofday`				| sys/time.h - get / set time
 |`pthread_create`			| pthread.h - Thread creation
 |`pthread_detach`			| pthread.h - When a detached thread terminates, its resources are automatically released back to the system
