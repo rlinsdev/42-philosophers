@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 09:36:23 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 11:49:01 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void *dinning_routines(void *data)
 
 	while (has_dinner_finish(philo->table) == false)
 	{
-		keep_eat_sleep();
+		// keep_eat_sleep();
 		keep_thinking(philo);
 	}
 	return (NULL);

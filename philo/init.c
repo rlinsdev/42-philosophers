@@ -6,13 +6,13 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 09:12:49 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 12:38:18 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void grab_forks(t_philo *philo);
+static void sort_fork_by_philo(t_philo *philo);
 static t_philo **init_philo(t_table *table);
 static bool init_mutex(t_table *table);
 
@@ -61,9 +61,21 @@ static t_philo **init_philo(t_table *table)
 		if (pthread_mutex_init(&philos[i]->last_meal_lock, 0) != 0)
 			return (error_msg_null(ERR_MUTEX, NULL));
 
-		grab_forks(philos[i]);
+		sort_fork_by_philo(philos[i]);
 		i++;
 	}
+
+	// Debug Fork
+	// i = 0;
+	// while (i < table->nbr_philo)
+	// {
+	// 	int value = (philos[i]->id + 1) % philos[i]->table->nbr_philo;
+	// 	printf("Calc: (%li + 1) %% %li = %i\n", philos[i]->id, philos[i]->table->nbr_philo, value);
+	// 	printf("Philo:[%li]. Fork[0]:[%i] \n", (i + 1), philos[i]->fork[0]);
+	// 	printf("Philo:[%li]. Fork[1]:[%i] \n", (i + 1), philos[i]->fork[1]);
+	// 	i++;
+	// }
+
 	return (philos);
 }
 
@@ -82,15 +94,22 @@ static bool init_mutex(t_table *table)
 }
 
 /**
- * @brief
+ * @brief Will define what fork the philo can take.
+ * Was made this way to avoid dead lock.
  * TODO: Get it better.
  * @param philo
  */
-static void grab_forks(t_philo *philo)
+static void sort_fork_by_philo(t_philo *philo)
 {
-	if (philo->id % 2 == 0)
+	philo->fork[0] = philo->id;
+	if (philo->table->nbr_philo > 1)
 	{
-		philo->r_fork = philo->id;
-		philo->l_fork = philo->id  +1;
+		// Quando for par...
+		philo->fork[1] = (philo->id + 1) % philo->table->nbr_philo;
+		if (philo->id % 2)
+		{
+			philo->fork[0] = (philo->id + 1) % philo->table->nbr_philo;
+			philo->fork[1] = philo->id;
+		}
 	}
 }

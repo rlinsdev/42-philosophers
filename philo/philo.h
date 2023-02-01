@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 09:34:16 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 11:44:39 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,11 @@ typedef enum e_state
 	S_END_DINNING
 }	t_state;
 
-typedef struct s_fork
-{
-	pthread_mutex_t	lock;
-}					t_fork;
-
 typedef struct s_philo
 {
 	pthread_t		thread;
 	long			id;
-	int				r_fork;
-	int				l_fork;
+	int				fork[2];
 	t_table			*table; // To Access data while thread running
 	long			nbr_meals_done;
 	time_t			last_meal;
@@ -70,6 +64,7 @@ typedef struct s_table
 	t_philo			**philo;
 	bool			dinner_end;
 	pthread_mutex_t	dinner_end_lock;
+	pthread_mutex_t	fork_lock;
 }				t_table;
 
 /**
