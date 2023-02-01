@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 07:54:49 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 09:24:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void *lonely_philo(t_philo *philo);
 static void header_pretty(t_philo *philo);
+static void	keep_thinking(t_philo *philo);
 
 void *dinning_routines(void *data)
 {
@@ -23,15 +24,48 @@ void *dinning_routines(void *data)
 	philo = (t_philo *)data;
 	if (philo->table->time_must_eat == 0)
 		return (NULL);
-		
+
 	pthread_mutex_lock(&philo->last_meal_lock);
 	philo->last_meal = philo->table->start_dinning;
 	pthread_mutex_unlock(&philo->last_meal_lock);
 
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
+	if (philo->id % 2 == 0)
+		keep_thinking(philo);
+
+	
 
 	return (NULL);
+}
+
+void	set_dinner_end_prop(t_table *table, bool value)
+{
+	pthread_mutex_lock(&table->dinner_end_lock);
+	table->dinner_end = value;
+	pthread_mutex_unlock(&table->dinner_end_lock);
+}
+
+bool	has_dinner_finish(t_table *table)
+{
+	bool result;
+
+	result = false;
+	pthread_mutex_lock(&table->dinner_end_lock);
+	if (table->dinner_end == true)
+		result = true;
+	pthread_mutex_unlock(&table->dinner_end_lock);
+	return (result);
+}
+
+static void	keep_thinking(t_philo *philo)
+{
+	time_t time_thinking;
+
+	time_thinking = 500; // TODO: Rever isso.
+
+	log_status(philo, S_THINKING);
+	thread_sleep(philo->table, time_thinking);
 }
 
 /**

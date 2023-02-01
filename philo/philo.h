@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 07:54:03 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 09:21:50 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_table
 	long			time_must_eat;
 	t_philo			**philo;
 	bool			dinner_end;
+	pthread_mutex_t	dinner_end_lock;
 }				t_table;
 
 /**
@@ -76,7 +77,7 @@ typedef struct s_table
  * Sleep / think / eat
  * @param data - Philosopher structure
  */
-void *dinning_routines(void *data);
+void	*dinning_routines(void *data);
 
 /**
  * @brief First method in project.
@@ -119,7 +120,7 @@ void	*error_msg_null(char *str, t_table *table);
  * @brief Will return the DateTime now, but in milliseconds
  * @return integer value
  */
-int datetime_now();
+int		datetime_now();
 
 /**
  * @brief Will subtract the current DatetimeNow, from start dinning to log
@@ -127,7 +128,7 @@ int datetime_now();
  * @param start_dinning
  * @return time_t
  */
-int	get_time_ms(int start_dinning);
+int		get_time_ms(int start_dinning);
 
 /**
  * @brief Log the status of current philo
@@ -152,10 +153,17 @@ void	thread_sleep(t_table *table, time_t duration);
 void	*free_table(t_table *table);
 
 /**
- * @brief
- *
- * @param table
+ * @brief Check if the dinner has finished / Flag 'dinner end' updated to true
+ * @param table table structure by ref
+ * @return boolean value
  */
-// void free_mutex(t_table *table);
+bool	has_dinner_finish(t_table *table);
+
+/**
+ * @brief Update property '-dinner end' in a Mutex context
+ * @param table Table structure by ref
+ * @param value Value to update
+ */
+void	set_dinner_end_prop(t_table *table, bool value);
 
 #endif
