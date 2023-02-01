@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 09:24:27 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 09:36:23 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,22 @@ void *dinning_routines(void *data)
 	if (philo->table->time_must_eat == 0)
 		return (NULL);
 
-	pthread_mutex_lock(&philo->last_meal_lock);
-	philo->last_meal = philo->table->start_dinning;
-	pthread_mutex_unlock(&philo->last_meal_lock);
+	set_last_meal_prop(philo, philo->table->start_dinning);
 
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
 	if (philo->id % 2 == 0)
 		keep_thinking(philo);
 
-	
-
+	while (has_dinner_finish(philo->table) == false)
+	{
+		keep_eat_sleep();
+		keep_thinking(philo);
+	}
 	return (NULL);
 }
 
-void	set_dinner_end_prop(t_table *table, bool value)
-{
-	pthread_mutex_lock(&table->dinner_end_lock);
-	table->dinner_end = value;
-	pthread_mutex_unlock(&table->dinner_end_lock);
-}
-
+// TODO: Classe mutex?
 bool	has_dinner_finish(t_table *table)
 {
 	bool result;

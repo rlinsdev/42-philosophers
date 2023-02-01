@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 09:21:50 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 09:34:16 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,11 +159,24 @@ void	*free_table(t_table *table);
  */
 bool	has_dinner_finish(t_table *table);
 
+/******************************************************************************
+*                                 Mutex                                       *
+******************************************************************************/
 /**
  * @brief Update property '-dinner end' in a Mutex context
  * @param table Table structure by ref
  * @param value Value to update
  */
 void	set_dinner_end_prop(t_table *table, bool value);
+
+/**
+ * @brief
+ *
+ */
+void	set_last_meal_prop(t_philo *philo, time_t value);
+
+/******************************************************************************
+*                                 Mutex                                       *
+******************************************************************************/
 
 #endif
