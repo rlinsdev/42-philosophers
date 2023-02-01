@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 20:06:48 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 07:59:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ static t_philo **init_philo(t_table *table)
 		philos[i]->id = i;
 		philos[i]->table = table;
 		philos[i]->nbr_meals_done = 0;
+
+		if (pthread_mutex_init(&philos[i]->last_meal_lock, 0) != 0)
+			return (error_msg_null(ERR_MUTEX, NULL));
+
 		grab_forks(philos[i]);
 		i++;
 	}

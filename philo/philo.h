@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 20:08:18 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 07:54:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h> // Malloc
 # include <pthread.h> //pthread_*, mutex
 # include <unistd.h> // usleep
-// # include <semaphore.h> // semaphore
 # include <stdbool.h> //boolean
 # include <limits.h> // long_max
 # include <sys/time.h> // gettimeofday
@@ -50,12 +49,14 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	pthread_t	thread;
-	long		id;
-	int		r_fork;
-	int		l_fork;
-	t_table		*table; // To Access data while thread running
-	long		nbr_meals_done;
+	pthread_t		thread;
+	long			id;
+	int				r_fork;
+	int				l_fork;
+	t_table			*table; // To Access data while thread running
+	long			nbr_meals_done;
+	time_t			last_meal;
+	pthread_mutex_t	last_meal_lock;
 }				t_philo;
 
 typedef struct s_table
@@ -68,7 +69,6 @@ typedef struct s_table
 	long			time_must_eat;
 	t_philo			**philo;
 	bool			dinner_end;
-	pthread_mutex_t log_lock; // TODO: Rever se precis adeste cara...
 }				t_table;
 
 /**
