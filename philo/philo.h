@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 15:06:00 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 16:56:58 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ bool	ft_isdigit(int c);
 t_table *init_table(int argc, char **argv);
 
 /**
- * @brief Handle msg error. Create Malloc / Mutex and Thread
+ * @brief Handle msg error. Create Malloc / Mutex and Thread errors
  * @param str String with error message
  * @param table Object to be cleaned
  */
