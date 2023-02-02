@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 12:46:05 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 09:56:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ static char *parse_format_pretty(t_state status)
 {
 	if (status == S_EATING)
 		return "\e[35m%i \t\t%ld\t\t %s\e[0m\n";
-	else if (status == S_FORK)
-		return "\e[36m%i \t\t%ld\t\t %s\e[0m\n";
+	else if (status == S_LEFT_FORK)
+		return "\e[36m%i \t\t%ld\t\t %s\e[0m - [Left ]\n";
+	else if (status == S_RIGHT_FORK)
+		return "\e[36m%i \t\t%ld\t\t %s\e[0m - [Right]\n";
 	else if (status == S_SLEEPING)
 		return "\e[33m%i \t\t%ld\t\t %s\e[0m\n";
 	else if (status == S_THINKING)
@@ -60,7 +62,7 @@ static char *parse_status(t_state status)
 {
 	if (status == S_EATING)
 		return "is eating";
-	else if (status == S_FORK)
+	else if (status == S_LEFT_FORK || status == S_RIGHT_FORK)
 		return "has taken a fork";
 	else if (status == S_SLEEPING)
 		return "is sleeping";

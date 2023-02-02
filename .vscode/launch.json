@@ -11,7 +11,7 @@
 			"program": "${workspaceFolder}/philo/philo", //path to your programs exe and exe name
 			// "args": ["4", "800","200", "200", "5"],
 			// "args": ["1", "4100","2000", "2000", "2"], // 1 Philo
-			"args": ["3", "4100","2000", "2000", "2"], // 2 Philo
+			"args": ["3", "8100","4000", "4000", "2"], // 2 Philo
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
@@ -33,7 +33,7 @@
 			"program": "${workspaceRoot}/philo/philo",
 			// "args": ["4", "800","200", "200", "5"],
 			// "args": ["1", "4100","2000", "2000", "2"], // 1 Philo
-			"args": ["3", "4100","2000", "2000", "2"], // 2 Philo
+			"args": ["3", "8100","4000", "4000", "2"], // 2 Philo
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
 			"environment": [],

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/01 11:44:39 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 10:18:02 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,20 @@
 
 typedef struct s_table	t_table;
 
+typedef enum e_fork
+{
+	F_LEFT = 0,
+	F_RIGHT = 1
+}
+		t_fork;
 typedef enum e_state
 {
 	S_EATING,
 	S_SLEEPING,
 	S_THINKING,
 	S_DEAD,
-	S_FORK,
+	S_LEFT_FORK,
+	S_RIGHT_FORK,
 	S_END_DINNING
 }	t_state;
 
@@ -49,6 +56,7 @@ typedef struct s_philo
 	int				fork[2];
 	t_table			*table; // To Access data while thread running
 	long			nbr_meals_done;
+	pthread_mutex_t	nbr_meals_done_lock;
 	time_t			last_meal;
 	pthread_mutex_t	last_meal_lock;
 }				t_philo;
@@ -64,7 +72,7 @@ typedef struct s_table
 	t_philo			**philo;
 	bool			dinner_end;
 	pthread_mutex_t	dinner_end_lock;
-	pthread_mutex_t	fork_lock;
+	pthread_mutex_t	*fork_lock;
 }				t_table;
 
 /**
@@ -165,10 +173,17 @@ bool	has_dinner_finish(t_table *table);
 void	set_dinner_end_prop(t_table *table, bool value);
 
 /**
- * @brief
- *
+ * @brief Set the last meal prop object
+ * @param philo
  */
 void	set_last_meal_prop(t_philo *philo, time_t value);
+
+
+/**
+ * @brief Responsible to increment number of time the philo eat
+ * @param philo
+ */
+void	increment_times_eat_prop(t_philo *philo);
 
 /******************************************************************************
 *                                 Mutex                                       *
