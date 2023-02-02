@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 10:23:07 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 12:14:16 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void *dinning_routines(void *data)
 {
 	t_philo *philo;
 
-	header_pretty(philo);
 	philo = (t_philo *)data;
 	if (philo->table->time_must_eat == 0)
 		return (NULL);
@@ -31,7 +30,8 @@ void *dinning_routines(void *data)
 
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
-	if (philo->id % 2 == 0)
+	printf(philo->id % 2);
+	if (philo->id % 2)
 		keep_thinking(philo);
 
 	while (has_dinner_finish(philo->table) == false)
@@ -78,9 +78,6 @@ static void keep_eating(t_philo *philo)
 
 	pthread_mutex_unlock(&philo->table->fork_lock[philo->fork[F_RIGHT]]);
 	pthread_mutex_unlock(&philo->table->fork_lock[philo->fork[F_LEFT]]);
-
-
-
 }
 
 // TODO: Classe mutex?
@@ -106,16 +103,6 @@ static void	keep_thinking(t_philo *philo)
 	thread_sleep(philo->table, time_thinking);
 }
 
-/**
- * @brief TODO: Colocar na classe de output
- *
- * @param philo
- */
-static void header_pretty(t_philo *philo)
-{
-	if (PRETTY == 1)
-		printf("\n\e[32m%s \t%s\t%s\e[0m\n","[Milliseconds]", "[Philo Number]", "[Action]");
-}
 
 /**
  * @brief Handle single Philo. Grab the fork and wait until die.

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 17:17:00 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 10:35:43 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,21 @@ static void end_dinning(t_table *table)
 	}
 }
 
+/**
+ * @brief TODO: Colocar na classe de output
+ *
+ * @param philo
+ */
+static void header_pretty()
+{
+	if (PRETTY == 1)
+		printf("\n\e[32m%s \t%s\t%s\e[0m\n","[Milliseconds]", "[Philo Number]", "[Action]");
+}
+
 static void start_dinning(t_table *table)
 {
 	int i;
-
+	header_pretty();
 	i = 0;
 	while (i < table->nbr_philo)
 	{

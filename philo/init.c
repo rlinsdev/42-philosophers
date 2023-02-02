@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 10:12:31 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 11:52:33 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ t_table	*init_table(int argc, char **argv)
 		table->time_must_eat = ft_ato_long(argv[5]);
 	table->dinner_end = false;
 	table->start_dinning = datetime_now();
-	table->philo = init_philo(table);
+	table->philo = malloc(sizeof(t_philo) * table->nbr_philo);
+	init_philo(table);
+	// printf("[%li]", table->philo[1]->id);
+	// printf("[%li]", table->philo[2]->id);
 	if (table->philo == NULL)
 		return (NULL);
 	if(init_mutex(table) == false)
@@ -39,6 +42,12 @@ t_table	*init_table(int argc, char **argv)
 	return (table);
 }
 
+/**
+ * @brief TODO: Precisa rever este método todo. só consegui fazer funcionar
+ * dando malloc antes de chamar o método e depois. Precisará dar free nestes cara do jeit oq está.
+ *
+ * @param table
+ */
 static t_philo **init_philo(t_table *table)
 {
 	t_philo	**philos;
@@ -51,33 +60,22 @@ static t_philo **init_philo(t_table *table)
 
 	while (i < table->nbr_philo)
 	{
-		philos[i] = malloc(sizeof(t_philo));
+		philos[i] = malloc(sizeof(t_philo) * 1);
 		if (philos[i] == NULL)
 			return (error_msg_null(ERR_MALLOC, NULL));
-		philos[i]->id = i;
-		philos[i]->table = table;
-		philos[i]->nbr_meals_done = 0;
-
 		if (pthread_mutex_init(&philos[i]->last_meal_lock, 0) != 0)
 			return (error_msg_null(ERR_MUTEX, NULL));
 		if (pthread_mutex_init(&philos[i]->nbr_meals_done_lock, 0) != 0)
 			return (error_msg_null(ERR_MUTEX, NULL));
+		philos[i]->table = table;
+		philos[i]->id = i;
+		philos[i]->nbr_meals_done = 0;
 
 		sort_fork_by_philo(philos[i]);
 		i++;
 	}
 
-	// Debug Fork
-	// i = 0;
-	// while (i < table->nbr_philo)
-	// {
-	// 	int value = (philos[i]->id + 1) % philos[i]->table->nbr_philo;
-	// 	printf("Calc: (%li + 1) %% %li = %i\n", philos[i]->id, philos[i]->table->nbr_philo, value);
-	// 	printf("Philo:[%li]. Fork[0]:[%i] \n", (i + 1), philos[i]->fork[0]);
-	// 	printf("Philo:[%li]. Fork[1]:[%i] \n", (i + 1), philos[i]->fork[1]);
-	// 	i++;
-	// }
-
+	table->philo = philos;
 	return (philos);
 }
 
