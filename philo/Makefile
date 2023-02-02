@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/02 10:33:29 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/02 14:29:54 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,9 @@ CFLAGS = -g -D PRETTY=1
 
 RM		= rm -rf
 
-SRCS 	= main.c ft_ato_long.c validation.c init.c error.c routines.c time.c \
-			output.c garbage_collector.c mutex.c
+SRCS 	= main.c ft_ato_long.c validation.c init.c error.c time.c \
+			output.c garbage_collector.c mutex.c \
+			routine_finish.c routine_dinning.c
 
 OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 

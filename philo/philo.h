@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 10:18:02 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 13:07:19 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef enum e_state
 
 typedef struct s_philo
 {
-	pthread_t		thread;
+	pthread_t		thread_philo;
 	long			id;
 	int				fork[2];
 	t_table			*table; // To Access data while thread running
@@ -63,6 +63,7 @@ typedef struct s_philo
 
 typedef struct s_table
 {
+	pthread_t		thread_table;
 	time_t			start_dinning;
 	long			nbr_philo;
 	long			time_to_die;
@@ -161,6 +162,19 @@ void	*free_table(t_table *table);
  * @return boolean value
  */
 bool	has_dinner_finish(t_table *table);
+
+/******************************************************************************
+*                                 Finish                                      *
+******************************************************************************/
+/**
+ * 
+*/
+void	*finish_routines(void *data);
+/******************************************************************************
+*                                 Finish                                      *
+******************************************************************************/
+
+
 
 /******************************************************************************
 *                                 Mutex                                       *
