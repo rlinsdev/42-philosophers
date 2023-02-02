@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 12:14:16 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 12:29:30 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void *dinning_routines(void *data)
 
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
-	printf(philo->id % 2);
+	// printf("[%li]\n", (philo->id % 2));
 	if (philo->id % 2)
 		keep_thinking(philo);
 

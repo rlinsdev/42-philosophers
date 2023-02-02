@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 11:52:33 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 12:45:56 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void sort_fork_by_philo(t_philo *philo);
 static t_philo **init_philo(t_table *table);
 static bool init_mutex(t_table *table);
+static pthread_mutex_t	*init_forks(t_table *table);
 
 t_table	*init_table(int argc, char **argv)
 {
@@ -79,6 +80,25 @@ static t_philo **init_philo(t_table *table)
 	return (philos);
 }
 
+static pthread_mutex_t	*init_forks(t_table *table)
+{
+	pthread_mutex_t	*forks;
+	long			i;
+
+	i = 0;
+	// TODO: Dar free neles
+	forks = malloc(sizeof(pthread_mutex_t) * table->nbr_philo);
+	if (!forks)
+		return (error_msg_null(ERR_MALLOC, NULL));
+	while (i < table->nbr_philo)
+	{
+		if (pthread_mutex_init(&forks[i], 0) != 0)
+			return (error_msg_null(ERR_MUTEX, NULL));
+		i++;
+	}
+	return (forks);
+}
+
 /**
  * @brief Initialize Mutex used in project
  * @param tablet tbl structure
@@ -87,9 +107,13 @@ static t_philo **init_philo(t_table *table)
  */
 static bool init_mutex(t_table *table)
 {
+	table->fork_lock = init_forks(table);
+	if (!table->fork_lock)
+		return (false);
 	if (pthread_mutex_init(&table->dinner_end_lock, 0) != 0)
 		return (error_msg_null(ERR_MUTEX, NULL));
 
+	// TODO: DEixei outras inicializações perdidas no código. Adicionar aqui.
 	return (true);
 }
 
