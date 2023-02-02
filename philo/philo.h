@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 13:07:19 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:06:00 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,9 +167,9 @@ bool	has_dinner_finish(t_table *table);
 *                                 Finish                                      *
 ******************************************************************************/
 /**
- * 
+ *
 */
-void	*finish_routines(void *data);
+void	*finish_routines_reached(void *data);
 /******************************************************************************
 *                                 Finish                                      *
 ******************************************************************************/
@@ -198,6 +198,15 @@ void	set_last_meal_prop(t_philo *philo, time_t value);
  * @param philo
  */
 void	increment_times_eat_prop(t_philo *philo);
+
+/**
+ * @brief Get the dinner end prop object
+ *
+ * @param table
+ * @return true
+ * @return false
+ */
+bool	get_dinner_end_prop(t_table *table);
 
 /******************************************************************************
 *                                 Mutex                                       *
