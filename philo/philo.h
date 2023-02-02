@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 16:56:58 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:23:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,22 +163,18 @@ void	*free_table(t_table *table);
  */
 bool	has_dinner_finish(t_table *table);
 
-/******************************************************************************
-*                                 Finish                                      *
-******************************************************************************/
 /**
- *
-*/
+ * @brief Add Pretty header, when configured
+ */
+void header_pretty();
+
+/**
+ * @brief Verify if the program must be finished Thread to check this
+ * @param data
+ * @return void*
+ */
 void	*finish_routines_reached(void *data);
-/******************************************************************************
-*                                 Finish                                      *
-******************************************************************************/
 
-
-
-/******************************************************************************
-*                                 Mutex                                       *
-******************************************************************************/
 /**
  * @brief Update property '-dinner end' in a Mutex context
  * @param table Table structure by ref
@@ -191,7 +187,6 @@ void	set_dinner_end_prop(t_table *table, bool value);
  * @param philo
  */
 void	set_last_meal_prop(t_philo *philo, time_t value);
-
 
 /**
  * @brief Responsible to increment number of time the philo eat
@@ -207,9 +202,5 @@ void	increment_times_eat_prop(t_philo *philo);
  * @return false
  */
 bool	get_dinner_end_prop(t_table *table);
-
-/******************************************************************************
-*                                 Mutex                                       *
-******************************************************************************/
 
 #endif

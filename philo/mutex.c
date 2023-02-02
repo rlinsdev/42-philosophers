@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:34:59 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:15:20 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:20:23 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,3 @@ bool	has_dinner_finish(t_table *table)
 	pthread_mutex_unlock(&table->dinner_end_lock);
 	return (result);
 }
-
-

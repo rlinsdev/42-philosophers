@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 15:05:32 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:21:26 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ static bool start_dinning(t_table *table);
  */
 int	main(int argc, char **argv)
 {
-	// printf("%d\n", datetime_now());
-	// // wait 1 second
-	// sleep(1);
-	// printf("%d\n", datetime_now());
-
-
-	// return (0);
-
 	t_table	*table;
 
 	table = NULL;
@@ -56,17 +48,6 @@ static void end_dinning(t_table *table)
 		pthread_join(table->philo[i]->thread_philo, NULL);
 		i++;
 	}
-}
-
-/**
- * @brief TODO: Colocar na classe de output
- *
- * @param philo
- */
-static void header_pretty()
-{
-	if (PRETTY == 1)
-		printf("\n\e[32m%s \t%s\t%s\e[0m\n","[Milliseconds]", "[Philo Number]", "[Action]");
 }
 
 /**

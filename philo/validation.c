@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:26:29 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 12:20:21 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:18:39 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ static bool	is_only_digit(char *str)
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) == false)
-		{
 			return (false);
-		}
 		i++;
 	}
 	return (true);

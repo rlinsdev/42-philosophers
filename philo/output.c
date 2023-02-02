@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 09:56:27 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:21:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void log_status(t_philo *philo, t_state status)
 	if (PRETTY == 1)
 		printf(parse_format_pretty(status),
 			get_time_ms(philo->table->start_dinning), philo->id + 1,
-			parse_status(status)); // TODO: Colocar qual o fork que ele está segurando.
+			parse_status(status));
 	else
 		printf("%i %ld %s\n", get_time_ms(philo->table->start_dinning),
 		philo->id + 1, parse_status(status));
@@ -72,3 +72,9 @@ static char *parse_status(t_state status)
 		return "died";
 }
 
+void header_pretty()
+{
+	if (PRETTY == 1)
+		printf("\n\e[32m%s \t%s\t%s\e[0m\n","[Milliseconds]", "[Philo Number]",
+			"[Action]");
+}
