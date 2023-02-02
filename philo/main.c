@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:21:26 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:37:10 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if (start_dinning(table) == false)
 		return (EXIT_FAILURE);
 	end_dinning(table);
-	free_table(table);
+	// free_table(table);
 	return (EXIT_SUCCESS);
 }
 
@@ -48,6 +48,9 @@ static void end_dinning(t_table *table)
 		pthread_join(table->philo[i]->thread_philo, NULL);
 		i++;
 	}
+	if (table->nbr_philo > 1)
+		pthread_join(table->thread_table, NULL);
+	free_table(table);
 }
 
 /**

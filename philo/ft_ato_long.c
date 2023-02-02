@@ -6,13 +6,12 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:32:43 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/24 12:21:24 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:25:08 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// static bool	check_out_of_range(int neg, unsigned long long num);
 static int	ft_isspace(int c);
 
 long	ft_ato_long(const char *str)

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:07:22 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:27:28 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ t_table	*init_table(int argc, char **argv)
 	table->start_dinning = datetime_now();
 	table->philo = malloc(sizeof(t_philo) * table->nbr_philo);
 	init_philo(table);
-	// printf("[%li]", table->philo[1]->id);
-	// printf("[%li]", table->philo[2]->id);
 	if (table->philo == NULL)
 		return (NULL);
 	if(init_mutex(table) == false)
@@ -119,7 +117,6 @@ static bool init_mutex(t_table *table)
 /**
  * @brief Will define what fork the philo can take.
  * Was made this way to avoid dead lock.
- * TODO: Get it better.
  * @param philo
  */
 static void sort_fork_by_philo(t_philo *philo)
@@ -127,9 +124,8 @@ static void sort_fork_by_philo(t_philo *philo)
 	philo->fork[0] = philo->id;
 	if (philo->table->nbr_philo > 1)
 	{
-		// Quando for par...
 		philo->fork[1] = (philo->id + 1) % philo->table->nbr_philo;
-		if (philo->id % 2)
+		if (philo->id % 2 != 0)
 		{
 			philo->fork[0] = (philo->id + 1) % philo->table->nbr_philo;
 			philo->fork[1] = philo->id;
