@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 20:05:19 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/01 12:46:05 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void log_status(t_philo *philo, t_state status)
 	if (PRETTY == 1)
 		printf(parse_format_pretty(status),
 			get_time_ms(philo->table->start_dinning), philo->id + 1,
-			parse_status(status));
+			parse_status(status)); // TODO: Colocar qual o fork que ele está segurando.
 	else
 		printf("%i %ld %s\n", get_time_ms(philo->table->start_dinning),
 		philo->id + 1, parse_status(status));
