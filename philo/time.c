@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:20:01 by rlins             #+#    #+#             */
-/*   Updated: 2023/01/31 10:57:18 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:17:32 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,15 @@ int datetime_now()
 int	get_time_ms(int start_dinning)
 {
 	return (datetime_now() - start_dinning);
+}
+
+void thread_sleep(t_table *table, time_t duration)
+{
+	time_t time_wake_up;
+
+	time_wake_up = datetime_now() + duration;
+	while (datetime_now() < time_wake_up)
+	{
+		usleep(100);
+	}
 }

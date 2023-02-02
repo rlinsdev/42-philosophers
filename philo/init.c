@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:03:55 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:07:22 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static pthread_mutex_t	*init_forks(t_table *table)
 	long			i;
 
 	i = 0;
-	// TODO: Dar free neles
 	forks = malloc(sizeof(pthread_mutex_t) * table->nbr_philo);
 	if (!forks)
 		return (error_msg_null(ERR_MALLOC, NULL));

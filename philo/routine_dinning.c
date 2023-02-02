@@ -6,14 +6,13 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 14:24:53 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:17:22 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static void *lonely_philo(t_philo *philo);
-static void header_pretty(t_philo *philo);
 static void	keep_thinking(t_philo *philo);
 static void keep_eating(t_philo *philo);
 static void keep_sleeping(t_philo *philo);
@@ -30,8 +29,7 @@ void *dinning_routines(void *data)
 
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
-	// printf("[%li]\n", (philo->id % 2));
-	if (philo->id % 2)
+	if (philo->id % 2 != 0)
 		keep_thinking(philo);
 
 	while (has_dinner_finish(philo->table) == false)
@@ -80,29 +78,18 @@ static void keep_eating(t_philo *philo)
 	pthread_mutex_unlock(&philo->table->fork_lock[philo->fork[F_LEFT]]);
 }
 
-// TODO: Classe mutex?
-bool	has_dinner_finish(t_table *table)
-{
-	bool result;
-
-	result = false;
-	pthread_mutex_lock(&table->dinner_end_lock);
-	if (table->dinner_end == true)
-		result = true;
-	pthread_mutex_unlock(&table->dinner_end_lock);
-	return (result);
-}
-
+/**
+ * @brief
+ *
+ * @param philo
+ */
 static void	keep_thinking(t_philo *philo)
 {
 	time_t time_thinking;
-
-	time_thinking = 500; // TODO: Rever isso.
-
+	time_thinking = 1000;
 	log_status(philo, S_THINKING);
 	thread_sleep(philo->table, time_thinking);
 }
-
 
 /**
  * @brief Handle single Philo. Grab the fork and wait until die.
@@ -118,14 +105,3 @@ static void *lonely_philo(t_philo *philo)
 	return (NULL);
 }
 
-void thread_sleep(t_table *table, time_t duration)
-{
-	time_t time_wake_up;
-
-	time_wake_up = datetime_now() + duration;
-
-	while (datetime_now() < time_wake_up)
-	{
-		usleep(100);
-	}
-}
