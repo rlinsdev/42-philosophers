@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 12:45:56 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:03:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_philo **init_philo(t_table *table)
 
 	while (i < table->nbr_philo)
 	{
-		philos[i] = malloc(sizeof(t_philo) * 1);
+		philos[i] = malloc(sizeof(t_philo));
 		if (philos[i] == NULL)
 			return (error_msg_null(ERR_MALLOC, NULL));
 		if (pthread_mutex_init(&philos[i]->last_meal_lock, 0) != 0)

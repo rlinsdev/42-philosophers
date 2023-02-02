@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:52:31 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:01:25 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:05:25 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	*free_table(t_table *table)
 
 	free_mutex(table);
 
+	if (table->fork_lock != NULL)
+		free(table->fork_lock);
+
 	if (table->philo)
 	{
 		i = 0;
@@ -37,6 +40,10 @@ void	*free_table(t_table *table)
 	return (NULL);
 }
 
+/**
+ * @brief Get Clean in mutex declarations
+ * @param table structure
+ */
 static void	free_mutex(t_table *table)
 {
 	int	i;
