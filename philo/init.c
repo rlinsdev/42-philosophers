@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 08:11:34 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 08:37:16 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_table	*init_table(int argc, char **argv)
 }
 
 /**
- * @brief
+ * @brief 
  * @param table
  */
 static t_philo **init_philo(t_table *table)
@@ -59,10 +59,6 @@ static t_philo **init_philo(t_table *table)
 		philos[i] = malloc(sizeof(t_philo));
 		if (philos[i] == NULL)
 			return (error_msg_null(ERR_MALLOC, NULL));
-		if (pthread_mutex_init(&philos[i]->last_meal_lock, 0) != 0)
-			return (error_msg_null(ERR_MUTEX, NULL));
-		if (pthread_mutex_init(&philos[i]->nbr_meals_done_lock, 0) != 0)
-			return (error_msg_null(ERR_MUTEX, NULL));
 		philos[i]->table = table;
 		philos[i]->id = i;
 		philos[i]->nbr_meals_done = 0;
@@ -99,15 +95,24 @@ static pthread_mutex_t	*init_forks(t_table *table)
  * @return true - success
  * @return false - error
  */
-static bool init_mutex(t_table *table)
+static	bool init_mutex(t_table *table)
 {
+	int	i;
 	table->fork_lock = init_forks(table);
 	if (!table->fork_lock)
 		return (false);
 	if (pthread_mutex_init(&table->dinner_end_lock, 0) != 0)
 		return (error_msg_null(ERR_MUTEX, NULL));
 
-	// TODO: DEixei outras inicializações perdidas no código. Adicionar aqui.
+	while (i < table->nbr_philo)
+	{
+		if (pthread_mutex_init(&table->philo[i]->last_meal_lock, 0) != 0)
+			return (error_msg_null(ERR_MUTEX, NULL));
+		if (pthread_mutex_init(&table->philo[i]->nbr_meals_done_lock, 0) != 0)
+			return (error_msg_null(ERR_MUTEX, NULL));
+		i++;
+	}
+
 	return (true);
 }
 
@@ -116,7 +121,7 @@ static bool init_mutex(t_table *table)
  * Was made this way to avoid dead lock.
  * @param philo
  */
-static void sort_fork_by_philo(t_philo *philo)
+static void	sort_fork_by_philo(t_philo *philo)
 {
 	philo->fork[0] = philo->id;
 	if (philo->table->nbr_philo > 1)
