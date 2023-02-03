@@ -80,6 +80,3 @@ $ ./philo 5	86400000 3600000 28800000 2
 
 
 
-TODO: Test with a lot of philo - simulate a lot of threads together - veify no erro (DEad lock / data racing)
-
-TODO: Will be better get number in forks, not Right or left fork
