@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:26:29 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:18:39 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 16:37:22 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static bool	is_valid_input(int argc, char **argv)
 			return (false);
 		}
 		value = ft_ato_long(argv[i]);
-		if (argv[i] < 0 || value > LONG_MAX)
+		if (value < 0 || value > LONG_MAX)
 		{
-			printf("Invalid input in [%s]. Negative or so long.\n", argv[i]);
+			printf("Invalid input in [%ld]. Negative or so long.\n", value);
 			return (false);
 		}
 		i++;

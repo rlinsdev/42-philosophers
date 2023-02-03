@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 11:15:33 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 16:37:54 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ static char *parse_format_pretty(t_state status);
 void log_status(t_philo *philo, t_state status)
 {
 	pthread_mutex_lock(&philo->table->log_lock);
-	// printf("BB: %i\n", philo->fork[F_LEFT]);
-	// printf("BB: %i\n", philo->fork[F_RIGHT]);
+	if (has_dinner_finish(philo->table) == true)
+	{
+		pthread_mutex_unlock(&philo->table->log_lock);
+		return ;
+	}
 	// TODO: Melhorar isso... Passar o número do fork
 	if (PRETTY == 1)
 		if (status == S_LEFT_FORK || status == S_RIGHT_FORK)
@@ -82,6 +85,8 @@ static char *parse_status(t_state status)
 		return "is thinking";
 	else if (status == S_DEAD)
 		return "died";
+	else
+		return "";
 }
 
 void header_pretty()

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 10:14:48 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 15:55:45 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static bool	init_philo(t_table *table)
 		philos[i]->id = i;
 		philos[i]->nbr_meals_done = 0;
 		sort_fork_by_philo(philos[i]);
-		printf("philo[%li] fork[0]: %i fork[1]: %i \n", philos[i]->id, philos[i]->fork[0], philos[i]->fork[1]);
+		// printf("philo[%li] fork[0]: %i fork[1]: %i \n", philos[i]->id, philos[i]->fork[0], philos[i]->fork[1]);
 		i++;
 	}
 	table->philo = philos;
