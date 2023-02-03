@@ -6,20 +6,21 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:00:22 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:01:47 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	sort_fork_by_philo(t_philo *philo);
-static bool	init_philo(t_table *table);
-static bool	init_mutex(t_table *table);
+static void				sort_fork_by_philo(t_philo *philo);
+static bool				init_philo(t_table *table);
+static bool				init_mutex(t_table *table);
 static pthread_mutex_t	*init_forks(t_table *table);
 
 t_table	*init_table(int argc, char **argv)
 {
-	t_table *table;
+	t_table	*table;
+
 	table = malloc(sizeof(t_table));
 	if (!table)
 		return (error_msg_null(ERR_MALLOC, NULL));
@@ -91,10 +92,10 @@ static pthread_mutex_t	*init_forks(t_table *table)
  * @return true - success
  * @return false - error
  */
-static	bool init_mutex(t_table *table)
+static bool	init_mutex(t_table *table)
 {
 	int	i;
-	
+
 	table->fork_lock = init_forks(table);
 	if (!table->fork_lock)
 		return (false);

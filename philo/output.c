@@ -6,16 +6,16 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 16:47:03 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:07:56 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static char *parse_status(t_state status);
-static char *parse_format_pretty(t_state status);
+static char	*parse_status(t_state status);
+static char	*parse_format_pretty(t_state status);
 
-void log_status(t_philo *philo, t_state status)
+void	log_status(t_philo *philo, t_state status)
 {
 	pthread_mutex_lock(&philo->table->log_lock);
 	if (has_dinner_finish(philo->table) == true)
@@ -23,21 +23,20 @@ void log_status(t_philo *philo, t_state status)
 		pthread_mutex_unlock(&philo->table->log_lock);
 		return ;
 	}
-	// TODO: Melhorar isso... Passar o número do fork
 	if (PRETTY == 1)
 		if (status == S_LEFT_FORK || status == S_RIGHT_FORK)
-				printf(parse_format_pretty(status),
+			printf(parse_format_pretty(status),
 				get_time_ms(philo->table->start_dinning), philo->id + 1,
 				parse_status(status),
 				philo->fork[F_LEFT],
 				philo->fork[F_RIGHT]);
 		else
 			printf(parse_format_pretty(status),
-				get_time_ms(philo->table->start_dinning), philo->id + 1,
-				parse_status(status));
+			get_time_ms(philo->table->start_dinning), philo->id + 1,
+			parse_status(status));
 	else
 		printf("%i %ld %s\n", get_time_ms(philo->table->start_dinning),
-		philo->id + 1, parse_status(status));
+			philo->id + 1, parse_status(status));
 	pthread_mutex_unlock(&philo->table->log_lock);
 }
 
@@ -51,21 +50,22 @@ void log_status(t_philo *philo, t_state status)
  * @param status
  * @return char*
  */
-static char *parse_format_pretty(t_state status)
+static char	*parse_format_pretty(t_state status)
 {
 	if (status == S_EATING)
-		return "\e[35m%i \t\t%ld\t\t %s\e[0m\n";
+		return ("\e[35m%i \t\t%ld\t\t %s\e[0m\n");
 	else if (status == S_LEFT_FORK)
-		return "\e[36m%i \t\t%ld\t\t %s\e[0m - [Left ](%i)\n";
+		return ("\e[36m%i \t\t%ld\t\t %s\e[0m - [Left ](%i)\n");
 	else if (status == S_RIGHT_FORK)
-		return "\e[36m%i \t\t%ld\t\t %s\e[0m - [Right](%i)\n";
+		return ("\e[36m%i \t\t%ld\t\t %s\e[0m - [Right](%i)\n");
 	else if (status == S_SLEEPING)
-		return "\e[33m%i \t\t%ld\t\t %s\e[0m\n";
+		return ("\e[33m%i \t\t%ld\t\t %s\e[0m\n");
 	else if (status == S_THINKING)
-		return "\e[34m%i \t\t%ld\t\t %s\e[0m\n";
+		return ("\e[34m%i \t\t%ld\t\t %s\e[0m\n");
 	else if (status == S_DEAD)
-		return "\e[31m%i \t\t%ld\t\t %s\e[0m\n";
-	else return "%i \t%ld\t %s\n";
+		return ("\e[31m%i \t\t%ld\t\t %s\e[0m\n");
+	else
+		return ("%i \t%ld\t %s\n");
 }
 
 /**
@@ -73,25 +73,25 @@ static char *parse_format_pretty(t_state status)
  * @param status
  * @return char*
  */
-static char *parse_status(t_state status)
+static char	*parse_status(t_state status)
 {
 	if (status == S_EATING)
-		return "is eating";
+		return ("is eating");
 	else if (status == S_LEFT_FORK || status == S_RIGHT_FORK)
-		return "has taken a fork";
+		return ("has taken a fork");
 	else if (status == S_SLEEPING)
-		return "is sleeping";
+		return ("is sleeping");
 	else if (status == S_THINKING)
-		return "is thinking";
+		return ("is thinking");
 	else if (status == S_DEAD)
-		return "died";
+		return ("died");
 	else
-		return "";
+		return ("");
 }
 
-void header_pretty()
+void	header_pretty(void)
 {
 	if (PRETTY == 1)
-		printf("\n\e[32m%s \t%s\t%s\e[0m\n","[Milliseconds]", "[Philo Number]",
+		printf("\n\e[32m%s \t%s\t%s\e[0m\n", "[Milliseconds]", "[Philo Number]",
 			"[Action]");
 }
