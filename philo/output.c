@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:07:56 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:10:33 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ void	log_status(t_philo *philo, t_state status)
 		if (status == S_LEFT_FORK || status == S_RIGHT_FORK)
 			printf(parse_format_pretty(status),
 				get_time_ms(philo->table->start_dinning), philo->id + 1,
-				parse_status(status),
-				philo->fork[F_LEFT],
+				parse_status(status), philo->fork[F_LEFT],
 				philo->fork[F_RIGHT]);
 		else
-			printf(parse_format_pretty(status),
-			get_time_ms(philo->table->start_dinning), philo->id + 1,
-			parse_status(status));
+			printf(parse_format_pretty(status), get_time_ms(
+				philo->table->start_dinning), philo->id + 1,
+				parse_status(status));
 	else
 		printf("%i %ld %s\n", get_time_ms(philo->table->start_dinning),
 			philo->id + 1, parse_status(status));

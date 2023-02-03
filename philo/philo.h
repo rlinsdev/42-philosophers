@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 12:03:14 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:12:20 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ typedef enum e_fork
 {
 	F_LEFT = 0,
 	F_RIGHT = 1
-}
-		t_fork;
+}	t_fork;
 typedef enum e_state
 {
 	S_EATING,
@@ -54,7 +53,7 @@ typedef struct s_philo
 	pthread_t		thread_philo;
 	long			id;
 	int				fork[2];
-	t_table			*table; // To Access data while thread running
+	t_table			*table;
 	long			nbr_meals_done;
 	pthread_mutex_t	nbr_meals_done_lock;
 	time_t			last_meal;
@@ -112,7 +111,7 @@ bool	ft_isdigit(int c);
  * @param argv Arg Vectors
  * @return t_table* Return this structure or null if error.
  */
-t_table *init_table(int argc, char **argv);
+t_table	*init_table(int argc, char **argv);
 
 /**
  * @brief Handle msg error. Create Malloc / Mutex and Thread errors
@@ -125,7 +124,7 @@ void	*error_msg_null(char *str, t_table *table);
  * @brief Will return the DateTime now, but in milliseconds
  * @return integer value
  */
-int		datetime_now();
+int		datetime_now(void);
 
 /**
  * @brief Will subtract the current DatetimeNow, from start dinning to log
@@ -148,7 +147,7 @@ void	log_status(t_philo *philo, t_state status);
  * @param table
  * @param duration Milliseconds to thread sleep
  */
-void thread_sleep(t_table *table, time_t duration);
+void	thread_sleep(t_table *table, time_t duration);
 
 /**
  * @brief Will free all memory allocation in program
@@ -167,7 +166,7 @@ bool	has_dinner_finish(t_table *table);
 /**
  * @brief Add Pretty header, when configured
  */
-void header_pretty();
+void	header_pretty(void);
 
 /**
  * @brief Verify if the program must be finished Thread to check this
