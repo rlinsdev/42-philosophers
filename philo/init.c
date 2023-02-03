@@ -6,14 +6,14 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 08:37:16 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 09:07:04 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void sort_fork_by_philo(t_philo *philo);
-static t_philo **init_philo(t_table *table);
+static void	sort_fork_by_philo(t_philo *philo);
+static bool	init_philo(t_table *table);
 static bool init_mutex(t_table *table);
 static pthread_mutex_t	*init_forks(t_table *table);
 
@@ -32,8 +32,7 @@ t_table	*init_table(int argc, char **argv)
 		table->time_must_eat = ft_ato_long(argv[5]);
 	table->dinner_end = false;
 	table->start_dinning = datetime_now();
-	init_philo(table);
-	if (table->philo == NULL)
+	if (init_philo(table) == false || table->philo == NULL)
 		return (NULL);
 	if(init_mutex(table) == false)
 		return (NULL);
@@ -41,10 +40,10 @@ t_table	*init_table(int argc, char **argv)
 }
 
 /**
- * @brief 
+ * @brief Initialize Philo structure
  * @param table
  */
-static t_philo **init_philo(t_table *table)
+static bool	init_philo(t_table *table)
 {
 	t_philo	**philos;
 	long	i;
@@ -53,7 +52,6 @@ static t_philo **init_philo(t_table *table)
 	philos = malloc(sizeof(t_philo) * table->nbr_philo);
 	if (philos == NULL)
 		return (error_msg_null(ERR_MALLOC, NULL));
-
 	while (i < table->nbr_philo)
 	{
 		philos[i] = malloc(sizeof(t_philo));
@@ -62,13 +60,12 @@ static t_philo **init_philo(t_table *table)
 		philos[i]->table = table;
 		philos[i]->id = i;
 		philos[i]->nbr_meals_done = 0;
-
 		sort_fork_by_philo(philos[i]);
+		// printf("philo[%li] fork[0]: %i fork[1]: %i \n", philos[i]->id, philos[i]->fork[0], philos[i]->fork[1]);
 		i++;
 	}
-
 	table->philo = philos;
-	return (philos);
+	return (true);
 }
 
 static pthread_mutex_t	*init_forks(t_table *table)
