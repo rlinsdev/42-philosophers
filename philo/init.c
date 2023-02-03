@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:27:28 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 08:11:34 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static pthread_mutex_t	*init_forks(t_table *table);
 t_table	*init_table(int argc, char **argv)
 {
 	t_table *table;
-	table = malloc(sizeof(table));
+	table = malloc(sizeof(t_table));
 	if (!table)
 		return (error_msg_null(ERR_MALLOC, NULL));
 	table->nbr_philo = ft_ato_long(argv[1]);
@@ -32,7 +32,6 @@ t_table	*init_table(int argc, char **argv)
 		table->time_must_eat = ft_ato_long(argv[5]);
 	table->dinner_end = false;
 	table->start_dinning = datetime_now();
-	table->philo = malloc(sizeof(t_philo) * table->nbr_philo);
 	init_philo(table);
 	if (table->philo == NULL)
 		return (NULL);
@@ -42,9 +41,7 @@ t_table	*init_table(int argc, char **argv)
 }
 
 /**
- * @brief TODO: Precisa rever este método todo. só consegui fazer funcionar
- * dando malloc antes de chamar o método e depois. Precisará dar free nestes cara do jeit oq está.
- *
+ * @brief
  * @param table
  */
 static t_philo **init_philo(t_table *table)
