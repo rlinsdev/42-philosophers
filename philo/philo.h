@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:23:55 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 10:17:26 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_table
 	bool			dinner_end;
 	pthread_mutex_t	dinner_end_lock;
 	pthread_mutex_t	*fork_lock;
+	pthread_mutex_t	log_lock;
 }				t_table;
 
 /**

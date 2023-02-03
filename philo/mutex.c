@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:34:59 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:20:23 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 09:37:25 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	increment_times_eat_prop(t_philo *philo)
 
 bool	has_dinner_finish(t_table *table)
 {
-	bool result;
+	bool	result;
 
 	result = false;
 	pthread_mutex_lock(&table->dinner_end_lock);

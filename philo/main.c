@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:37:10 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 09:18:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ static bool start_dinning(t_table *table)
 	i = 0;
 	while (i < table->nbr_philo)
 	{
-		if (pthread_create(&table->philo[i]->thread_philo, NULL, &dinning_routines,
-			 table->philo[i]) != 0)
+		if (pthread_create(&table->philo[i]->thread_philo, NULL,
+				&dinning_routines, table->philo[i]) != 0)
 			 return (error_msg_null(ERR_THREAD, table));
 		i++;
 	}
@@ -77,8 +77,6 @@ static bool start_dinning(t_table *table)
 		if (pthread_create(&table->thread_table, NULL, &finish_routines_reached,
 		table) != 0)
 			return (error_msg_null(ERR_THREAD, table));
-
-
 	}
 	return (true);
 }

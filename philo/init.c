@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 09:07:04 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 10:14:48 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_table	*init_table(int argc, char **argv)
 	table->start_dinning = datetime_now();
 	if (init_philo(table) == false || table->philo == NULL)
 		return (NULL);
-	if(init_mutex(table) == false)
+	if (init_mutex(table) == false)
 		return (NULL);
 	return (table);
 }
@@ -61,7 +61,7 @@ static bool	init_philo(t_table *table)
 		philos[i]->id = i;
 		philos[i]->nbr_meals_done = 0;
 		sort_fork_by_philo(philos[i]);
-		// printf("philo[%li] fork[0]: %i fork[1]: %i \n", philos[i]->id, philos[i]->fork[0], philos[i]->fork[1]);
+		printf("philo[%li] fork[0]: %i fork[1]: %i \n", philos[i]->id, philos[i]->fork[0], philos[i]->fork[1]);
 		i++;
 	}
 	table->philo = philos;
@@ -99,6 +99,8 @@ static	bool init_mutex(t_table *table)
 	if (!table->fork_lock)
 		return (false);
 	if (pthread_mutex_init(&table->dinner_end_lock, 0) != 0)
+		return (error_msg_null(ERR_MUTEX, NULL));
+	if (pthread_mutex_init(&table->log_lock, 0) != 0)
 		return (error_msg_null(ERR_MUTEX, NULL));
 
 	while (i < table->nbr_philo)

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:52:31 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/02 17:33:39 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 10:16:28 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ static void	free_mutex(t_table *table)
 		i++;
 	}
 	pthread_mutex_destroy(&table->dinner_end_lock);
+	pthread_mutex_destroy(&table->log_lock);
 }
