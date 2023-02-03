@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 11:16:53 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 11:56:40 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ bool dinner_finished_reached(t_table *table)
 	bool	eat_enough;
 
 	i = 0;
+	eat_enough = true;
 	while (i < table->nbr_philo)
 	{
 		if (kill_philo(table->philo[i]))
 			return (true);
 		if (table->time_must_eat != -1)
 			if (table->philo[i]->nbr_meals_done < table->time_must_eat)
-				eat_enough = true;
+				eat_enough = false;
 		i++;
 	}
 	if (table->time_must_eat != -1 && eat_enough == true)
