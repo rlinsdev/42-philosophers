@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 11:05:16 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 12:20:08 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void *dinning_routines(void *data)
 static void keep_sleeping(t_philo *philo)
 {
 	log_status(philo, S_SLEEPING);
-	thread_sleep(philo->table->time_to_sleep);
+	thread_sleep(philo->table, philo->table->time_to_sleep);
 }
 
 /**
@@ -71,11 +71,11 @@ static void keep_eating(t_philo *philo)
 
 	set_last_meal_prop(philo, datetime_now());
 
-	thread_sleep(philo->table->time_to_eat);
+	thread_sleep(philo->table, philo->table->time_to_eat);
 
 	if(has_dinner_finish(philo->table) == false)
 	{
-		printf("ENTROU??");
+		// printf("ENTROU??");
 		increment_times_eat_prop(philo);
 	}
 
@@ -93,7 +93,7 @@ static void	keep_thinking(t_philo *philo)
 	time_t time_thinking;
 	time_thinking = 1000;
 	log_status(philo, S_THINKING);
-	thread_sleep(time_thinking);
+	thread_sleep(philo->table, time_thinking);
 }
 
 /**
@@ -104,7 +104,7 @@ static void	keep_thinking(t_philo *philo)
 static void *lonely_philo(t_philo *philo)
 {
 	log_status(philo, S_LEFT_FORK);
-	thread_sleep(philo->table->time_to_die);
+	thread_sleep(philo->table, philo->table->time_to_die);
 	log_status(philo, S_DEAD);
 
 	return (NULL);

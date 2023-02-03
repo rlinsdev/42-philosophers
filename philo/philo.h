@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 11:11:40 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 12:03:14 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	log_status(t_philo *philo, t_state status);
  * @param table
  * @param duration Milliseconds to thread sleep
  */
-void	thread_sleep(time_t duration);
+void thread_sleep(t_table *table, time_t duration);
 
 /**
  * @brief Will free all memory allocation in program

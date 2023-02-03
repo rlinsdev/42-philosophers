@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 11:56:40 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 12:20:16 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*finish_routines_reached(void *data)
 	table = (t_table *)data;
 	if (table->time_must_eat == 0)
 		return (NULL);
+	// printf("3 - not end\n");
 	set_dinner_end_prop(table, false);
 	// thread_sleep(500);
 	while (true)
@@ -43,9 +44,9 @@ static bool	kill_philo(t_philo *philo)
 	time_t	actual_time;
 
 	actual_time = datetime_now();
-	if ((actual_time - philo->last_meal) >= philo->table->time_must_eat)
+	if ((actual_time - philo->last_meal) >= philo->table->time_to_die)
 	{
-		//printf("\tfazer entrar aqui!!!\n");
+		// printf("MUST DIE!!!\n");
 		set_dinner_end_prop(philo->table, true);
 		log_status(philo, S_DEAD);
 		return (true);
@@ -77,6 +78,7 @@ bool dinner_finished_reached(t_table *table)
 	}
 	if (table->time_must_eat != -1 && eat_enough == true)
 	{
+		// printf("1");
 		set_dinner_end_prop(table, true);
 		return (true);
 	}
