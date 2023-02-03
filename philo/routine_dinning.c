@@ -6,33 +6,29 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 12:20:08 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 16:54:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void *lonely_philo(t_philo *philo);
+static void	*lonely_philo(t_philo *philo);
 static void	keep_thinking(t_philo *philo);
-static void keep_eating(t_philo *philo);
-static void keep_sleeping(t_philo *philo);
+static void	keep_eating(t_philo *philo);
+static void	keep_sleeping(t_philo *philo);
 
-void *dinning_routines(void *data)
+void	*dinning_routines(void *data)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)data;
 	if (philo->table->time_must_eat == 0)
 		return (NULL);
-
 	set_last_meal_prop(philo, philo->table->start_dinning);
-	// if (philo->table->time_must_eat)
-
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
 	if (philo->id % 2 != 0)
 		keep_thinking(philo);
-
 	while (has_dinner_finish(philo->table) == false)
 	{
 		keep_eating(philo);
@@ -47,7 +43,7 @@ void *dinning_routines(void *data)
  * Log the status and sleep the thread
  * @param philo
  */
-static void keep_sleeping(t_philo *philo)
+static void	keep_sleeping(t_philo *philo)
 {
 	log_status(philo, S_SLEEPING);
 	thread_sleep(philo->table, philo->table->time_to_sleep);
@@ -59,26 +55,17 @@ static void keep_sleeping(t_philo *philo)
  * 4) Update last meal, 5) Sleep until time to eat, 6)Update eat property
  * @param philo Philo property
  */
-static void keep_eating(t_philo *philo)
+static void	keep_eating(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->fork_lock[philo->fork[F_LEFT]]);
 	log_status(philo, S_LEFT_FORK);
 	pthread_mutex_lock(&philo->table->fork_lock[philo->fork[F_RIGHT]]);
 	log_status(philo, S_RIGHT_FORK);
-	// printf("AA: %i\n", philo->fork[F_LEFT]);
-	// printf("AA: %i\n", philo->fork[F_RIGHT]);
 	log_status(philo, S_EATING);
-
 	set_last_meal_prop(philo, datetime_now());
-
 	thread_sleep(philo->table, philo->table->time_to_eat);
-
-	if(has_dinner_finish(philo->table) == false)
-	{
-		// printf("ENTROU??");
+	if (has_dinner_finish(philo->table) == false)
 		increment_times_eat_prop(philo);
-	}
-
 	pthread_mutex_unlock(&philo->table->fork_lock[philo->fork[F_RIGHT]]);
 	pthread_mutex_unlock(&philo->table->fork_lock[philo->fork[F_LEFT]]);
 }
@@ -90,7 +77,8 @@ static void keep_eating(t_philo *philo)
  */
 static void	keep_thinking(t_philo *philo)
 {
-	time_t time_thinking;
+	time_t	time_thinking;
+
 	time_thinking = 1000;
 	log_status(philo, S_THINKING);
 	thread_sleep(philo->table, time_thinking);
@@ -101,11 +89,10 @@ static void	keep_thinking(t_philo *philo)
  * Philos are not allowed to eat with just one fork
  * @param philo
  */
-static void *lonely_philo(t_philo *philo)
+static void	*lonely_philo(t_philo *philo)
 {
 	log_status(philo, S_LEFT_FORK);
 	thread_sleep(philo->table, philo->table->time_to_die);
 	log_status(philo, S_DEAD);
-
 	return (NULL);
 }
