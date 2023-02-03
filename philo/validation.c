@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:26:29 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 16:56:27 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:46:11 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,22 @@ static bool	is_valid_input(int argc, char **argv)
 			return (false);
 		}
 		i++;
+	}
+	return (true);
+}
+
+bool	is_param_valid(t_table *table)
+{
+	if (table->nbr_philo > 200)
+	{
+		printf(ERR_INV_INP, table->nbr_philo);
+		return (false);
+	}
+	if (table->time_to_die < 60 || table->time_to_eat < 60
+			|| table->time_to_sleep < 60)
+	{
+		printf(ERR_SIXTY);
+		return (false);
 	}
 	return (true);
 }

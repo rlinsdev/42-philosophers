@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:12:20 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:46:56 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define ERR_THREAD	"Error: Could not create thread.\n"
 # define ERR_MALLOC	"Error: Could not allocate memory.\n"
 # define ERR_MUTEX	"Error: Could not create mutex.\n"
+# define ERR_INV_INP "Invalid input in [%li].\n"
+# define ERR_SIXTY "Invalid input. Must be greater than 60.\n"
 
 # ifndef PRETTY
 #  define PRETTY 0
@@ -193,5 +195,12 @@ void	set_last_meal_prop(t_philo *philo, time_t value);
  * @param philo
  */
 void	increment_times_eat_prop(t_philo *philo);
+
+/**
+ * @brief Validation about the params passed by
+ * @param table Table structure
+ * @return boolean. Valid or invalid
+ */
+bool	is_param_valid(t_table *table);
 
 #endif

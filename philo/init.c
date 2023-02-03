@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:01:47 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:41:57 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_table	*init_table(int argc, char **argv)
 	table->start_dinning = datetime_now();
 	if (init_philo(table) == false || table->philo == NULL)
 		return (NULL);
-	if (init_mutex(table) == false)
+	if (init_mutex(table) == false || is_param_valid(table) == false)
 		return (NULL);
 	return (table);
 }
