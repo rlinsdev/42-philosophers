@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:26:29 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:46:11 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/04 15:14:51 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	is_param_valid(t_table *table)
 		return (false);
 	}
 	if (table->time_to_die < 60 || table->time_to_eat < 60
-			|| table->time_to_sleep < 60)
+		|| table->time_to_sleep < 60)
 	{
 		printf(ERR_SIXTY);
 		return (false);

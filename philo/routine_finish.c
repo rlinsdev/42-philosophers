@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 16:57:28 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/04 15:29:34 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static bool	kill_philo(t_philo *philo)
 	actual_time = datetime_now();
 	if ((actual_time - philo->last_meal) >= philo->table->time_to_die)
 	{
-		set_dinner_end_prop(philo->table, true);
 		log_status(philo, S_DEAD);
+		set_dinner_end_prop(philo->table, true);
 		return (true);
 	}
 	return (false);
