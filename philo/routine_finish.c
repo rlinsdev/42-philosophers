@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 11:30:36 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:15:57 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*finish_routines_reached(void *data)
 	{
 		if (dinner_finished_reached(table) == true)
 			return (NULL);
-		usleep(500);
+		usleep(1000);
 	}
 	return (NULL);
 }

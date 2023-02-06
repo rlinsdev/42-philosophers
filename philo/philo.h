@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 11:31:42 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:16:33 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,8 @@ bool	has_dinner_finish(t_table *table);
 void	header_pretty(void);
 
 /**
- * @brief Verify if the program must be finished Thread to check this
+ * @brief Verify if the program must be finished Thread to check this.
+ * USleep to avoid Memory leak in the end of program
  * @param data
  * @return void*
  */
