@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:20:01 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 15:29:32 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 18:54:52 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,17 @@ void	thread_sleep(t_table *table, time_t duration)
 			break ;
 		usleep(100);
 	}
+}
+
+long handle_thinking_time(t_philo *philo)
+{
+	long	time_to_think;
+	pthread_mutex_lock(&philo->table->log_lock);
+	time_to_think = (philo->table->time_to_die - (datetime_now() -
+		philo->last_meal) - philo->table->time_to_eat) / 2;
+	pthread_mutex_unlock(&philo->table->log_lock);
+	if (time_to_think > 500)
+		return (200);
+	else
+		return(1);
 }

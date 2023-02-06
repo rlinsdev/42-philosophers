@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 12:16:33 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 18:41:48 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,5 +203,12 @@ void	increment_times_eat_prop(t_philo *philo);
  * @return boolean. Valid or invalid
  */
 bool	is_param_valid(t_table *table);
+
+/**
+ * @brief Responsible for manage the time to think of each Philo.
+ * This is necessary because we must increase or decrement the time to keep
+ * thinking. This will be changed by the range of philo will die
+ */
+long handle_thinking_time(t_philo *philo);
 
 #endif

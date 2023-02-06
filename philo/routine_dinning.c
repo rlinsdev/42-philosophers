@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 15:28:24 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 18:59:35 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	keep_thinking(t_philo *philo, bool log)
 {
 	time_t	time_thinking;
 
-	time_thinking = 0;
+	time_thinking = handle_thinking_time(philo);
 	if (log == true)
 		log_status(philo, S_THINKING);
 	thread_sleep(philo->table, time_thinking);
