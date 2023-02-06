@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 08:29:40 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 09:02:08 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	*dinning_routines(void *data)
 		return (lonely_philo(philo));
 	if (philo->id % 2 != 0)
 		keep_thinking(philo, false);
+	// printf("AAA\n");
 	while (has_dinner_finish(philo->table) == false)
 	{
+		// printf("Chamou Eat Sleep Rotine\n");
 		keep_eating(philo);
 		keep_sleeping(philo);
 		keep_thinking(philo, true);
@@ -79,9 +81,9 @@ static void	keep_thinking(t_philo *philo, bool log)
 {
 	time_t	time_thinking;
 
-	time_thinking = 1000;
-	// if (log == true)
-	log_status(philo, S_THINKING);
+	time_thinking = 200;
+	if (log == true)
+		log_status(philo, S_THINKING);
 	thread_sleep(philo->table, time_thinking);
 }
 
