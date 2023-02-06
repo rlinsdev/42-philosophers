@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:20:01 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 10:58:14 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:29:32 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,3 @@ void	thread_sleep(t_table *table, time_t duration)
 		usleep(100);
 	}
 }
-
-// void	sync_thread_delay(time_t start)
-// {
-// 	while (datetime_now() < start)
-// 		continue ;
-// }
