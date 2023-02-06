@@ -6,14 +6,14 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 16:54:55 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 08:29:40 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static void	*lonely_philo(t_philo *philo);
-static void	keep_thinking(t_philo *philo);
+static void	keep_thinking(t_philo *philo, bool log);
 static void	keep_eating(t_philo *philo);
 static void	keep_sleeping(t_philo *philo);
 
@@ -28,12 +28,12 @@ void	*dinning_routines(void *data)
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
 	if (philo->id % 2 != 0)
-		keep_thinking(philo);
+		keep_thinking(philo, false);
 	while (has_dinner_finish(philo->table) == false)
 	{
 		keep_eating(philo);
 		keep_sleeping(philo);
-		keep_thinking(philo);
+		keep_thinking(philo, true);
 	}
 	return (NULL);
 }
@@ -75,11 +75,12 @@ static void	keep_eating(t_philo *philo)
  *
  * @param philo
  */
-static void	keep_thinking(t_philo *philo)
+static void	keep_thinking(t_philo *philo, bool log)
 {
 	time_t	time_thinking;
 
 	time_thinking = 1000;
+	// if (log == true)
 	log_status(philo, S_THINKING);
 	thread_sleep(philo->table, time_thinking);
 }

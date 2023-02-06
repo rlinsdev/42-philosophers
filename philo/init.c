@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:41:57 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/04 15:36:02 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,13 +122,13 @@ static bool	init_mutex(t_table *table)
 static void	sort_fork_by_philo(t_philo *philo)
 {
 	philo->fork[0] = philo->id;
-	if (philo->table->nbr_philo > 1)
-	{
+	// if (philo->table->nbr_philo > 1)
+	// {
 		philo->fork[1] = (philo->id + 1) % philo->table->nbr_philo;
 		if (philo->id % 2 != 0)
 		{
 			philo->fork[0] = (philo->id + 1) % philo->table->nbr_philo;
 			philo->fork[1] = philo->id;
 		}
-	}
+	// }
 }
