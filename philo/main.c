@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 08:56:57 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:10:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ static void	end_dinning(t_table *table)
 	}
 	if (table->nbr_philo > 1)
 		pthread_join(table->thread_table, NULL);
+	// printf("\tAAAAAAAAAaaHAHAHA PASSOU\n");
+	usleep(100);
+	// thread_sleep(table, 1000);
 	free_table(table);
 }
 
