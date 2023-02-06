@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 10:59:01 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 11:31:06 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_table	*init_table(int argc, char **argv)
 	if (argc == 6)
 		table->time_must_eat = ft_ato_long(argv[5]);
 	table->dinner_end = false;
-	// table->start_dinning = datetime_now() + 100;
 	table->start_dinning = datetime_now();
 	if (init_philo(table) == false || table->philo == NULL)
 		return (NULL);
@@ -123,13 +122,13 @@ static bool	init_mutex(t_table *table)
 static void	sort_fork_by_philo(t_philo *philo)
 {
 	philo->fork[0] = philo->id;
-	// if (philo->table->nbr_philo > 1)
-	// {
+	if (philo->table->nbr_philo > 1)
+	{
 		philo->fork[1] = (philo->id + 1) % philo->table->nbr_philo;
 		if (philo->id % 2 != 0)
 		{
 			philo->fork[0] = (philo->id + 1) % philo->table->nbr_philo;
 			philo->fork[1] = philo->id;
 		}
-	// }
+	}
 }

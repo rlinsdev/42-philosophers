@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 10:58:32 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 11:31:25 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,12 @@ void	*dinning_routines(void *data)
 	if (philo->table->time_must_eat == 0)
 		return (NULL);
 	set_last_meal_prop(philo, philo->table->start_dinning);
-	// sync_thread_delay(philo->table->start_dinning);
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
 	if (philo->id % 2 != 0)
 		keep_thinking(philo, false);
-	// printf("AAA\n");
 	while (has_dinner_finish(philo->table) == false)
 	{
-		// printf("Chamou Eat Sleep Rotine\n");
 		keep_eating(philo);
 		keep_sleeping(philo);
 		keep_thinking(philo, true);
