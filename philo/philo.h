@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 17:46:56 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 10:58:44 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,12 @@ void	increment_times_eat_prop(t_philo *philo);
  * @return boolean. Valid or invalid
  */
 bool	is_param_valid(t_table *table);
+
+/**
+ * @brief Delay to start both threads synchronized. Without this,
+ * a error is identified in the test
+ * @param start
+ */
+// void	sync_thread_delay(time_t start);
 
 #endif

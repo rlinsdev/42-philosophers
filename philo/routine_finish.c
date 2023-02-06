@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/04 15:29:34 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 10:58:24 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*finish_routines_reached(void *data)
 	if (table->time_must_eat == 0)
 		return (NULL);
 	set_dinner_end_prop(table, false);
-	// thread_sleep(500); TODO
+	// sync_thread_delay(table->start_dinning);
 	while (true)
 	{
 		if (dinner_finished_reached(table) == true)
