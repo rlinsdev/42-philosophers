@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 11:48:13 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:18:59 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ static pthread_mutex_t	*init_forks(t_table *table)
  */
 static bool	init_mutex(t_table *table)
 {
-	// int	i;
-
 	table->fork_lock = init_forks(table);
 	if (!table->fork_lock)
 		return (false);
@@ -107,14 +105,6 @@ static bool	init_mutex(t_table *table)
 		return (error_msg_null(ERR_MUTEX, NULL));
 	if (pthread_mutex_init(&table->log_lock, 0) != 0)
 		return (error_msg_null(ERR_MUTEX, NULL));
-	// while (i < table->nbr_philo)
-	// {
-	// 	// if (pthread_mutex_init(&table->philo[i]->last_meal_lock, 0) != 0)
-	// 	// 	return (error_msg_null(ERR_MUTEX, NULL));
-	// 	// if (pthread_mutex_init(&table->philo[i]->nbr_meals_done_lock, 0) != 0)
-	// 	// 	return (error_msg_null(ERR_MUTEX, NULL));
-	// 	i++;
-	// }
 	return (true);
 }
 
