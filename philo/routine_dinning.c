@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 09:22:12 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 11:31:25 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:28:24 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ static void	keep_eating(t_philo *philo)
 }
 
 /**
- * @brief
- *
- * @param philo
+ * @brief Handle the think function. Will check if is necessary log the action
+ * and sleep the time passed in program
+ * @param philo Philo structure
  */
 static void	keep_thinking(t_philo *philo, bool log)
 {
