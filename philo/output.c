@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/04 15:28:13 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:03:11 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,9 @@ void	log_status(t_philo *philo, t_state status)
 	}
 	if (PRETTY == 1)
 	{
-		if (status == S_LEFT_FORK || status == S_RIGHT_FORK)
-			printf(parse_format_pretty(status),
-				get_time_ms(philo->table->start_dinning), philo->id + 1,
-				parse_status(status), philo->fork[F_LEFT],
-				philo->fork[F_RIGHT]);
-		else
-			printf(parse_format_pretty(status), get_time_ms(
-					philo->table->start_dinning), philo->id + 1,
-				parse_status(status));
+		printf(parse_format_pretty(status), get_time_ms(
+				philo->table->start_dinning), philo->id + 1,
+			parse_status(status));
 	}
 	else
 		printf("%i %ld %s\n", get_time_ms(philo->table->start_dinning),
@@ -56,9 +50,9 @@ static char	*parse_format_pretty(t_state status)
 	if (status == S_EATING)
 		return ("\e[35m%i \t\t%ld\t\t %s\e[0m\n");
 	else if (status == S_LEFT_FORK)
-		return ("\e[36m%i \t\t%ld\t\t %s\e[0m - [Left ](%i)\n");
+		return ("\e[36m%i \t\t%ld\t\t %s\e[0m - [Left ]\n");
 	else if (status == S_RIGHT_FORK)
-		return ("\e[36m%i \t\t%ld\t\t %s\e[0m - [Right](%i)\n");
+		return ("\e[36m%i \t\t%ld\t\t %s\e[0m - [Right]\n");
 	else if (status == S_SLEEPING)
 		return ("\e[33m%i \t\t%ld\t\t %s\e[0m\n");
 	else if (status == S_THINKING)
