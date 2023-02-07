@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/07 08:35:36 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/07 08:37:59 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ CFLAGS = -g -Wall -Werror -Wextra #Normal Execution
 #Check Leak memory
 LEAK = valgrind --leak-check=full --show-leak-kinds=all \
 	--trace-children=yes --track-origins=yes -s
+	
 # Thread error detections:
 HEL_GRIND = valgrind --quiet --tool=helgrind
 

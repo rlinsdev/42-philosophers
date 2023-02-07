@@ -24,12 +24,11 @@ In this project, we must solve the classic problem *diner philosopher* problem
 
 ## Parameters:
 * **number_of_philosophers**: The number of philosophers and also the number of forks.
-* **time_to_die**: (in milliseconds): If a philosopher didn’t start eating time_to_die milliseconds since the beginning of their last meal or the beginning of the simulation, they die.
-* **time_to_eat**: (in milliseconds): The time it takes for a philosopher to eat.
-During that time, they will need to hold two forks.
-* **time_to_sleep**: (in milliseconds): The time a philosopher will spend sleeping.
-* **number_of_times_each_philosopher_must_eat**: (optional argument): If all philosophers have eaten at least _this parametrized_ times, the simulation stops. If not specified, the simulation stops when a
-philosopher dies.
+* **time_to_die**: (in milliseconds): It's the max time that the philo must stay without eat. Otherwise, he must die. To kill philo, we must calculate the last meal time with this time.
+* **time_to_eat**: (in milliseconds): The time it takes for a philosopher to eat. The thread (or philo) will sleep until this time.
+During that time, the philo needs hold two forks.
+* **time_to_sleep**: (in milliseconds): The time a philosopher will spend sleeping. The thread (or philo) will sleep until this time.
+* **number_of_times_each_philosopher_must_eat**: (optional argument): If all philosophers have eaten at least _this parametrized_ times, the simulation stops. If not specified, the simulation stops when a philosopher dies.
 
 
 
@@ -51,7 +50,7 @@ philosopher dies.
 ```Shell
 #Generate code in machine language
 $ gcc -S main.c
-$ ./philo 5	86400000 3600000 28800000 2
+$ ./philo 3 8100 2000 2000 2
 ```
 
 ## To Test:
