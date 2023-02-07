@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 18:41:48 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/07 11:33:11 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ typedef struct s_philo
 	int				fork[2];
 	t_table			*table;
 	long			nbr_meals_done;
-	pthread_mutex_t	nbr_meals_done_lock;
+	pthread_mutex_t	general_meal_lock;
 	time_t			last_meal;
-	pthread_mutex_t	last_meal_lock;
 }				t_philo;
 
 typedef struct s_table

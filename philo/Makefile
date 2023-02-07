@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/07 09:11:52 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/07 10:33:39 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR	=	obj
 OBJS	=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compilation
-CC = gcc -pthread
+CC = gcc -lpthread
 
 # Compilation flags
 # CFLAGS = -g -fsanitize=thread # Warning datarace. Don't work with valgrind
@@ -33,7 +33,7 @@ LEAK = valgrind --leak-check=full --show-leak-kinds=all \
 	--trace-children=yes --track-origins=yes -s
 
 # Thread error detections:
-HEL_GRIND = valgrind --quiet --tool=helgrind
+HEL_GRIND = valgrind --tool=helgrind
 
 RM		= rm -rf
 
@@ -90,8 +90,8 @@ run: $(NAME)
 valgrind:
 	$(LEAK) ./$(NAME) 1 800 200 200
 
-valgrind2:
-#	$(HEL_GRIND) ./$(NAME) 3 8100 2000 2000 2
-	$(HEL_GRIND) ./$(NAME) 1 800 200 200
+helgrind:
+	$(HEL_GRIND) ./$(NAME) 2 8100 2000 2000 1
+#	$(HEL_GRIND) ./$(NAME) 1 800 200 200
 
 .PHONY: all run re clean fclean

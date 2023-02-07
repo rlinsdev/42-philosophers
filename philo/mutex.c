@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:34:59 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/03 16:38:43 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/07 11:31:37 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	set_last_meal_prop(t_philo *philo, time_t value)
 {
-	pthread_mutex_lock(&philo->last_meal_lock);
+	pthread_mutex_lock(&philo->general_meal_lock);
 	philo->last_meal = value;
-	pthread_mutex_unlock(&philo->last_meal_lock);
+	pthread_mutex_unlock(&philo->general_meal_lock);
 }
 
 void	set_dinner_end_prop(t_table *table, bool value)
@@ -28,9 +28,9 @@ void	set_dinner_end_prop(t_table *table, bool value)
 
 void	increment_times_eat_prop(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->nbr_meals_done_lock);
+	pthread_mutex_lock(&philo->general_meal_lock);
 	philo->nbr_meals_done++;
-	pthread_mutex_unlock(&philo->nbr_meals_done_lock);
+	pthread_mutex_unlock(&philo->general_meal_lock);
 }
 
 bool	has_dinner_finish(t_table *table)

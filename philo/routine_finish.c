@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 19:37:04 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/07 11:27:02 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static bool	kill_philo(t_philo *philo)
 	{
 		log_status(philo, S_DEAD);
 		set_dinner_end_prop(philo->table, true);
+		// pthread_mutex_unlock(&philo->general_meal_lock);
 		return (true);
 	}
 	return (false);
@@ -65,11 +66,13 @@ bool	dinner_finished_reached(t_table *table)
 	eat_enough = true;
 	while (i < table->nbr_philo)
 	{
+		pthread_mutex_lock(&table->philo[i]->general_meal_lock);
 		if (kill_philo(table->philo[i]))
 			return (true);
 		if (table->time_must_eat != -1)
 			if (table->philo[i]->nbr_meals_done < table->time_must_eat)
 				eat_enough = false;
+		pthread_mutex_unlock(&table->philo[i]->general_meal_lock);
 		i++;
 	}
 	if (table->time_must_eat != -1 && eat_enough == true)
