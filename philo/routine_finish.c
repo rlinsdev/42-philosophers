@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 12:15:57 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/06 19:37:04 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ void	*finish_routines_reached(void *data)
 
 /**
  * @brief Check by Meal time if the philo must be killed
- * @param philo
- * @return true
- * @return false
+ * @param philo structure
+ * @return boolean - killed or not
  */
 static bool	kill_philo(t_philo *philo)
 {
