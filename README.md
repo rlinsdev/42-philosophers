@@ -54,7 +54,51 @@ $ ./philo 3 8100 2000 2000 2
 ```
 
 ## To Test:
-* Valgrind with race condition
+* Valgrind with warning DataRace: Turn on flag: `-fsanitize=thread`
+* Valgrind with helgrind: Found thread errors: execute `make helgrind`
+<!-- * [Socrates framework:](https://github.com/nesvoboda/socrates)
+
+	```Shell
+	# in root folder:
+	$ git clone https://github.com/nesvoboda/socrates
+	$ python3 socrates/socrates.py .
+	# Death test take more than 10 min. and crash in the middle
+	``` -->
+* [Philosphers-42Project-Tester:](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
+
+	```Shell
+	# in root folder:
+	$ git clone https://github.com/newlinuxbot/Philosphers-42Project-Tester.git
+	$ cd Philosphers-42Project-Tester
+	$  ./start.sh ../ 1
+	# Death test take more than 10 min. and crash in the middle
+	```
+
+## Commands Sample:
+```Bash
+# Test 1: Philo Should not eat and should die
+$ ./philo 1 800 200 200
+# Test 2: No philo should die
+$ ./philo 5 800 200 200
+# Test 3: No philo should die and Dinning stop when each eat at least 7x
+$ ./philo 5 800 200 200 7
+$ ./philo 5 800 200 200 7 | grep 'is eating'
+# Test4:  No philo should die
+$ ./philo 4 410 200 200
+# Test5:  One philo should die
+$ ./philo 4 310 200 100
+# Test6: 2 philos. Time to death, lower than 10ms
+$ ./philo 2 310 200 100
+##
+##Random tests:
+##
+$ ./philo 3 8100 2000 2000 2
+$ ./philo 2 4100 2000 2000 2
+$ ./philo 4 410 200 200 5
+$ ./philo 4 410 200 200
+$ ./philo 2 800 200 200 2
+```
+
 
 ## Links
 [Code Vault - Playlist](https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
