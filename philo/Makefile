@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/06 15:06:42 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/07 08:35:36 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,16 +25,14 @@ CC = gcc -pthread
 
 # Compilation flags
 # CFLAGS = -g -fsanitize=thread # Warning datarace. Don't work with valgrind
-CFLAGS = -g -Wall -Werror -Wextra -D PRETTY=1
-# CFLAGS = -g
-# CFLAGS = -g -Wall -Werror -Wextra # TODO: Descomentar
+# CFLAGS = -g -Wall -Werror -Wextra -D PRETTY=1 #PRETTY debug info
+CFLAGS = -g -Wall -Werror -Wextra #Normal Execution
 
-#Chedk Leak memory
- LEAK = valgrind --leak-check=full --show-leak-kinds=all \
+#Check Leak memory
+LEAK = valgrind --leak-check=full --show-leak-kinds=all \
 	--trace-children=yes --track-origins=yes -s
 # Thread error detections:
-# LEAK = --tool=helgrind
-# LEAK = --tool=drd
+HEL_GRIND = valgrind --quiet --tool=helgrind
 
 RM		= rm -rf
 
@@ -74,14 +72,17 @@ bonus: all
 rebonus: fclean all
 
 run: $(NAME)
-# 1 philo
 #	@./$(NAME) 2 4100 2000 2000 2
 	@./$(NAME) 3 8100 2000 2000 2
-# @./$(NAME) 4 410 200 200
-# @./$(NAME) 2 800 200 200 2
+#	@./$(NAME) 5 410 200 200 5
+#	@./$(NAME) 4 410 200 200
+#	@./$(NAME) 2 800 200 200 2
 
 valgrind:
-	$(LEAK) ./philo 4 410 200 200
-#	$(LEAK) ./philo 1 800 200 200
+	$(LEAK) ./$(NAME) 1 800 200 200
+
+valgrind2:
+#	$(HEL_GRIND) ./$(NAME) 3 8100 2000 2000 2
+	$(HEL_GRIND) ./$(NAME) 1 800 200 200
 
 .PHONY: all run re clean fclean
