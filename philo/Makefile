@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/07 08:37:59 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/07 09:11:52 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -g -Wall -Werror -Wextra #Normal Execution
 #Check Leak memory
 LEAK = valgrind --leak-check=full --show-leak-kinds=all \
 	--trace-children=yes --track-origins=yes -s
-	
+
 # Thread error detections:
 HEL_GRIND = valgrind --quiet --tool=helgrind
 
@@ -73,8 +73,16 @@ bonus: all
 rebonus: fclean all
 
 run: $(NAME)
-#	@./$(NAME) 2 4100 2000 2000 2
+#	@./$(NAME) 1 800 200 200
+#	@./$(NAME) 5 800 200 200
+#	@./$(NAME) 5 800 200 200 7
+#	@./$(NAME) 5 800 200 200 7 | grep 'is eating'
+#	@./$(NAME) 4 410 200 200
+#	@./$(NAME) 4 310 200 100
+#	@./$(NAME) 2 310 200 100
+
 	@./$(NAME) 3 8100 2000 2000 2
+#	@./$(NAME) 2 4100 2000 2000 2
 #	@./$(NAME) 5 410 200 200 5
 #	@./$(NAME) 4 410 200 200
 #	@./$(NAME) 2 800 200 200 2
