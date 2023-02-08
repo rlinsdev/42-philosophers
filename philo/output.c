@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:56:13 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static char	*parse_format_pretty(t_state status);
 void	log_status(t_philo *philo, t_state status)
 {
 	if (has_dinner_finish(philo->table) == true)
-		// pthread_mutex_unlock(&philo->table->log_lock);
 		return ;
 	pthread_mutex_lock(&philo->table->log_lock);
 	if (PRETTY == 1)
@@ -34,14 +33,14 @@ void	log_status(t_philo *philo, t_state status)
 }
 
 /**
- * @brief
+ * @brief Just called when parametrized to run with pretty
  * 34m - blue	Thinking
  * 33m - bow	Sleeping
  * 35m - Purple Eating
  * 31m - Red - 	Dead
  * 36m - Cyan	Fork
- * @param status
- * @return char*
+ * @param status Status of philo
+ * @return char* - Formatted text
  */
 static char	*parse_format_pretty(t_state status)
 {

@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:53:28 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	end_dining(t_table *table)
  * @brief This method will start the dining of philosophers.
  * Will start the threads (Nbr threads is the same nbr philo)
  * Will start the thread to finish the dinner.
- * @param table
+ * @param table structure
  */
 static bool	start_dining(t_table *table)
 {
