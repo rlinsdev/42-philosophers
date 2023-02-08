@@ -64,6 +64,13 @@ During that time, the philo needs hold two forks.
 ### Result:
 ![Test Result](imgs/test-result.png)
 
+## Pretty result:
+* Turn on / uncomment _cflags_ with PRETTY flag, to get a better visualization result
+
+### Result:
+![Test Result](imgs/preety.png)
+
+
 ```Bash
 	# in root folder:
 	$ git clone https://github.com/newlinuxbot/Philosphers-42Project-Tester.git
