@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:07:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 15:03:11 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:12:09 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ static char	*parse_format_pretty(t_state status);
 
 void	log_status(t_philo *philo, t_state status)
 {
-	pthread_mutex_lock(&philo->table->log_lock);
 	if (has_dinner_finish(philo->table) == true)
-	{
-		pthread_mutex_unlock(&philo->table->log_lock);
+		// pthread_mutex_unlock(&philo->table->log_lock);
 		return ;
-	}
+	pthread_mutex_lock(&philo->table->log_lock);
 	if (PRETTY == 1)
 	{
 		printf(parse_format_pretty(status), get_time_ms(
