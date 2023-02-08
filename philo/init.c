@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/07 11:33:26 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:46:35 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ static bool	init_philo(t_table *table)
 	return (true);
 }
 
+/**
+ * @brief Initialize Forks. Each fork will be a mutex. Will return the number
+ * of forks mutex structure.
+ * @param table
+ * @return pthread_mutex_t*
+ */
 static pthread_mutex_t	*init_forks(t_table *table)
 {
 	pthread_mutex_t	*forks;
@@ -89,10 +95,9 @@ static pthread_mutex_t	*init_forks(t_table *table)
 }
 
 /**
- * @brief Initialize Mutex used in project
+ * @brief Initialize part of Mutex used in project
  * @param tablet tbl structure
- * @return true - success
- * @return false - error
+ * @return Boolean - success or failure
  */
 static bool	init_mutex(t_table *table)
 {
@@ -109,6 +114,9 @@ static bool	init_mutex(t_table *table)
 /**
  * @brief Will define what fork the philo can take.
  * Was made this way to avoid dead lock.
+ *** philo[0]philo->fork[0]:0 and ->fork[1]:1
+ *** philo[1]philo->fork[0]:2 and ->fork[1]:1
+ *** philo[2]philo->fork[0]:2 and ->fork[1]:0
  * @param philo
  */
 static void	sort_fork_by_philo(t_philo *philo)
