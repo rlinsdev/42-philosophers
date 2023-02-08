@@ -66,7 +66,7 @@ $ ./philo 3 8100 2000 2000 2
 	``` -->
 * [Philosphers-42Project-Tester:](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
 
-	```Shell
+	```Bash
 	# in root folder:
 	$ git clone https://github.com/newlinuxbot/Philosphers-42Project-Tester.git
 	$ cd Philosphers-42Project-Tester
