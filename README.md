@@ -39,7 +39,7 @@ During that time, the philo needs hold two forks.
 |`usleep`					| suspend execution for microsecond intervals
 |`gettimeofday`				| sys/time.h - get / set time
 |`pthread_create`			| pthread.h - Thread creation
-|`pthread_join`				| pthread.h - function waits for the thread specified by thread to terminate
+|`pthread_join`				| pthread.h - function to wait for a thread to end.
 |`pthread_mutex_init` / `pthread_mutex_destroy`		| pthread.h - destroy and initialize a mutex
 |`pthread_mutex_unlock` / `pthread_mutex_lock`		| pthread.h - lock and unlock a mutex
 
