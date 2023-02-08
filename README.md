@@ -55,7 +55,7 @@ During that time, the philo needs hold two forks.
 	$ python3 socrates/socrates.py .
 	# Death test take more than 10 min. and crash in the middle
 	``` -->
-* Test covered by:: [Philosphers-42Project-Tester:](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
+* Test covered by: [Philosphers-42Project-Tester](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
 
 ### Result:
 ![Test Result](imgs/test-result.png)
@@ -65,7 +65,8 @@ During that time, the philo needs hold two forks.
 	$ git clone https://github.com/newlinuxbot/Philosphers-42Project-Tester.git
 	$ cd Philosphers-42Project-Tester
 	$  ./start.sh ../ 1
-	# How it's working with threads, the result must be different in some machines. The test was instable in my machine. Was successfully in 42 intranet.
+	# How it's working with threads, the result must be different in some machines.
+	#The test was instable in my machine. Was successfully in 42 intranet.
 ```
 
 ## Pretty result:
@@ -105,22 +106,22 @@ $ ./philo 4 310 200 100
 
 
 ## Links
-[Code Vault - Playlist](https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
+* [Code Vault - Playlist](https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
 
-[What are Race conditions?](https://www.youtube.com/watch?v=FY9livorrJI)
+* [What are Race conditions?](https://www.youtube.com/watch?v=FY9livorrJI)
 
-[Mutex in C?](https://youtu.be/oq29KUy29iQ)
+* [Mutex in C?](https://youtu.be/oq29KUy29iQ)
 
-[Deadlock C?](https://youtu.be/LjWug2tvSBU)
+* [Deadlock C?](https://youtu.be/LjWug2tvSBU)
 
-[Semaphores?](https://youtu.be/YSn8_XdGH7c)
+* [Semaphores?](https://youtu.be/YSn8_XdGH7c)
 
-[Dining philosophers problem](https://youtu.be/FYUi-u7UWgw)
+* [Dining philosophers problem](https://youtu.be/FYUi-u7UWgw)
 
-[Dining philosophers problem 2](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
+* [Dining philosophers problem 2](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
 
-[Dining philosophers problem 3](https://www.ecb.torontomu.ca/~courses/coe518/Labs/lab4/lisi.edu-dining-Philosopherecture8.pdf)
+* [Dining philosophers problem 3](https://www.ecb.torontomu.ca/~courses/coe518/Labs/lab4/lisi.edu-dining-Philosopherecture8.pdf)
 
-[Dining philosophers problem 4](https://www.youtube.com/watch?v=knJ4MHWPIwk)
+* [Dining philosophers problem 4](https://www.youtube.com/watch?v=knJ4MHWPIwk)
 
-[Geeks for geeks](https://www.geeksforgeeks.org/multithreading-in-c/)
+* [Geeks for geeks](https://www.geeksforgeeks.org/multithreading-in-c/)
