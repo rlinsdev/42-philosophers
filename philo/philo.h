@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/07 11:34:35 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef enum e_state
 	S_DEAD,
 	S_LEFT_FORK,
 	S_RIGHT_FORK,
-	S_END_DINNING
+	S_END_dining
 }	t_state;
 
 typedef struct s_philo
@@ -64,7 +64,7 @@ typedef struct s_philo
 typedef struct s_table
 {
 	pthread_t		thread_table;
-	time_t			start_dinning;
+	time_t			start_dining;
 	long			nbr_philo;
 	long			time_to_die;
 	long			time_to_eat;
@@ -82,7 +82,7 @@ typedef struct s_table
  * Sleep / think / eat
  * @param data - Philosopher structure
  */
-void	*dinning_routines(void *data);
+void	*dining_routines(void *data);
 
 /**
  * @brief First method in project.
@@ -128,12 +128,12 @@ void	*error_msg_null(char *str, t_table *table);
 int		datetime_now(void);
 
 /**
- * @brief Will subtract the current DatetimeNow, from start dinning to log
+ * @brief Will subtract the current DatetimeNow, from start dining to log
  * the time in program
- * @param start_dinning
+ * @param start_dining
  * @return time_t
  */
-int		get_time_ms(int start_dinning);
+int		get_time_ms(int start_dining);
 
 /**
  * @brief Log the status of current philo

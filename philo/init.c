@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:16:49 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 10:46:35 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_table	*init_table(int argc, char **argv)
 	if (argc == 6)
 		table->time_must_eat = ft_ato_long(argv[5]);
 	table->dinner_end = false;
-	table->start_dinning = datetime_now();
+	table->start_dining = datetime_now();
 	if (init_philo(table) == false || table->philo == NULL)
 		return (NULL);
 	if (init_mutex(table) == false || is_param_valid(table) == false)

@@ -78,7 +78,7 @@ During that time, the philo needs hold two forks.
 $ ./philo 1 800 200 200
 # Test 2: No philo should die
 $ ./philo 5 800 200 200
-# Test 3: No philo should die and Dinning stop when each eat at least 7x
+# Test 3: No philo should die and dining stop when each eat at least 7x
 $ ./philo 5 800 200 200 7
 $ ./philo 5 800 200 200 7 | grep 'is eating'
 # Test4:  No philo should die

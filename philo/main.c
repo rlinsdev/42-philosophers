@@ -6,14 +6,14 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 10:48:27 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	end_dinning(t_table *table);
-static bool	start_dinning(t_table *table);
+static void	end_dining(t_table *table);
+static bool	start_dining(t_table *table);
 
 /**
  * @brief Main Class of program
@@ -31,18 +31,18 @@ int	main(int argc, char **argv)
 	table = init_table(argc, argv);
 	if (!table)
 		return (EXIT_FAILURE);
-	if (start_dinning(table) == false)
+	if (start_dining(table) == false)
 		return (EXIT_FAILURE);
-	end_dinning(table);
+	end_dining(table);
 	return (EXIT_SUCCESS);
 }
 
 /**
- * @brief Responsible to finish the philo dinning.
+ * @brief Responsible to finish the philo dining.
  * Will join all threads and free all objects
  * @param table Table structure
  */
-static void	end_dinning(t_table *table)
+static void	end_dining(t_table *table)
 {
 	int	i;
 
@@ -58,12 +58,12 @@ static void	end_dinning(t_table *table)
 }
 
 /**
- * @brief This method will start the dinning of philosophers.
+ * @brief This method will start the dining of philosophers.
  * Will start the threads (Nbr threads is the same nbr philo)
  * Will start the thread to finish the dinner.
  * @param table
  */
-static bool	start_dinning(t_table *table)
+static bool	start_dining(t_table *table)
 {
 	int	i;
 
@@ -72,7 +72,7 @@ static bool	start_dinning(t_table *table)
 	while (i < table->nbr_philo)
 	{
 		if (pthread_create(&table->philo[i]->thread_philo, NULL,
-				&dinning_routines, table->philo[i]) != 0)
+				&dining_routines, table->philo[i]) != 0)
 			return (error_msg_null(ERR_THREAD, table));
 		i++;
 	}

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine_dinning.c                                  :+:      :+:    :+:   */
+/*   routine_dining.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,14 +17,14 @@ static void	keep_thinking(t_philo *philo, bool log);
 static void	keep_eating(t_philo *philo);
 static void	keep_sleeping(t_philo *philo);
 
-void	*dinning_routines(void *data)
+void	*dining_routines(void *data)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
 	if (philo->table->time_must_eat == 0)
 		return (NULL);
-	set_last_meal_prop(philo, philo->table->start_dinning);
+	set_last_meal_prop(philo, philo->table->start_dining);
 	if (philo->table->nbr_philo == 1)
 		return (lonely_philo(philo));
 	if (philo->id % 2 != 0)

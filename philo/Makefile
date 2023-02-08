@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/08 10:05:30 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ RM		= rm -rf
 
 SRCS 	= main.c ft_ato_long.c validation.c init.c error.c time.c \
 			output.c garbage_collector.c mutex.c \
-			routine_finish.c routine_dinning.c
+			routine_finish.c routine_dining.c
 
 OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
