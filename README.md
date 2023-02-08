@@ -11,7 +11,7 @@
 
 
 # Philosophers:
-In this project, we must solve the classic problem *diner philosopher* problem.
+In this project, we must solve the classic *diner philosopher* problem.
 Read the 42's subject for more details, or check the videos linked down below.
 
 
@@ -33,43 +33,32 @@ During that time, the philo needs hold two forks.
 
 
 
-## New external functions.
+## External functions.
 | function | Description |
 |-							|-		 |
 |`usleep`					| suspend execution for microsecond intervals
 |`gettimeofday`				| sys/time.h - get / set time
 |`pthread_create`			| pthread.h - Thread creation
-|`pthread_detach`			| pthread.h - When a detached thread terminates, its resources are automatically released back to the system
 |`pthread_join`				| pthread.h - function waits for the thread specified by thread to terminate
-|`pthread_mutex_init`		| pthread.h - destroy and initialize a mutex
-|`pthread_mutex_destroy`	| pthread.h - destroy and initialize a mutex
-|`pthread_mutex_lock`		| pthread.h - lock and unlock a mutex
-|`pthread_mutex_unlock`		| pthread.h - lock and unlock a mutex
+|`pthread_mutex_init` / `pthread_mutex_destroy`		| pthread.h - destroy and initialize a mutex
+|`pthread_mutex_unlock` / `pthread_mutex_lock`		| pthread.h - lock and unlock a mutex
 
 
 ## To Test:
-* Valgrind with warning DataRace: Turn on flag: `-fsanitize=thread`. Execute `make valgrind`
+* Valgrind with warning DataRace: Turn on flag: `-fsanitize=thread`.
 * Valgrind with helgrind: Found thread errors: execute `make helgrind`
 * to run: `make run` (Down bellow has more tests with different params)
 <!-- * [Socrates framework:](https://github.com/nesvoboda/socrates)
-
 	```Shell
 	# in root folder:
 	$ git clone https://github.com/nesvoboda/socrates
 	$ python3 socrates/socrates.py .
 	# Death test take more than 10 min. and crash in the middle
 	``` -->
-* [Philosphers-42Project-Tester:](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
+* Test covered by:: [Philosphers-42Project-Tester:](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
 
 ### Result:
 ![Test Result](imgs/test-result.png)
-
-## Pretty result:
-* Turn on / uncomment _cflags_ with PRETTY flag, to get a better visualization result
-
-### Result:
-![Test Result](imgs/preety.png)
-
 
 ```Bash
 	# in root folder:
@@ -78,6 +67,13 @@ During that time, the philo needs hold two forks.
 	$  ./start.sh ../ 1
 	# How it's working with threads, the result must be different in some machines. The test was instable in my machine. Was successfully in 42 intranet.
 ```
+
+## Pretty result:
+* Turn on / uncomment _cflags_ in makefile, with PRETTY flag to get a better visualization result:
+
+### Result:
+![Test Result](imgs/preety.png)
+
 
 ## Commands Sample:
 ```Bash

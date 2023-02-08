@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/08 11:56:53 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ run: $(NAME)
 #	@./$(NAME) 2 800 200 200 2
 	@./$(NAME) 2 60 60 60
 
+# I'm not sure if Valgrind without helgrind tool is a good idea to execute...
 valgrind:
 	$(LEAK) ./$(NAME) 1 800 200 200
 #	$(LEAK) ./$(NAME) 2 60 60 60
