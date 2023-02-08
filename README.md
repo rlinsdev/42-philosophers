@@ -17,15 +17,15 @@ Read the 42's subject for more details, or check the videos linked down below.
 
 
 ## Definitions / Infos:
-* Data Races: Occur when multiple tasks or threads access a shared resource without sufficient protections
-* Mutex: MUTual EXclusion - Protect the execution again other threads running at the same time.
-* Semaphore: Some kind of mutex, but with counter (Just bonus)
-* Each philosopher is a thread and each fork is protected by a mutex.
-* There are as many forks as philosophers.
+* **Data Races**: Occur when multiple tasks or threads access a shared resource without sufficient protections
+* **Mutex**: **Mut**ual **Ex**clusion - Protect the execution again other threads running at the same time.
+* **Semaphore**: Some kind of mutex, but with counter (Just bonus)
+* **Each philosopher is a thread and each fork is protected by a mutex**.
+* **There are as many forks as philosophers**.
 
 ## Parameters:
 * **number_of_philosophers**: The number of philosophers and also the number of forks.
-* **time_to_die**: (in milliseconds): It's the max time that the philo must stay without eat. Otherwise, he must die. To kill philo, we must calculate the last meal time with this time.
+* **time_to_die**: (in milliseconds): It's the max time that the philo must stay without eat, otherwise, he must die. To kill philo, we must calculate the last meal time with this time.
 * **time_to_eat**: (in milliseconds): The time it takes for a philosopher to eat. The thread (or philo) will sleep until this time.
 During that time, the philo needs hold two forks.
 * **time_to_sleep**: (in milliseconds): The time a philosopher will spend sleeping. The thread (or philo) will sleep until this time.
@@ -47,16 +47,10 @@ During that time, the philo needs hold two forks.
 |`pthread_mutex_unlock`		| pthread.h - lock and unlock a mutex
 
 
-## Commands:
-```bash
-#Generate code in machine language
-$ gcc -S main.c
-$ ./philo 3 8100 2000 2000 2
-```
-
 ## To Test:
-* Valgrind with warning DataRace: Turn on flag: `-fsanitize=thread`
+* Valgrind with warning DataRace: Turn on flag: `-fsanitize=thread`. Execute `make valgrind`
 * Valgrind with helgrind: Found thread errors: execute `make helgrind`
+* to run: `make run` (Down bellow has more tests with different params)
 <!-- * [Socrates framework:](https://github.com/nesvoboda/socrates)
 
 	```Shell
