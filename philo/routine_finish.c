@@ -6,13 +6,13 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 11:02:11 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 16:18:45 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-bool	dinner_finished_reached(t_table *table);
+static bool	dinner_finished_reached(t_table *table);
 
 void	*finish_routines_reached(void *data)
 {
@@ -32,16 +32,14 @@ void	*finish_routines_reached(void *data)
 }
 
 /**
- * @brief Check by Meal time if the philo must be killed
+ * @brief Check by Meal time if the philo must be killed.
+ * Must to unlock mutex, otherwise will not return the terminal
  * @param philo structure
  * @return boolean - killed or not
  */
 static bool	kill_philo(t_philo *philo)
 {
-	time_t	actual_time;
-
-	actual_time = datetime_now();
-	if ((actual_time - philo->last_meal) >= philo->table->time_to_die)
+	if ((datetime_now() - philo->last_meal) >= philo->table->time_to_die)
 	{
 		log_status(philo, S_DEAD);
 		set_dinner_end_prop(philo->table, true);
@@ -52,11 +50,12 @@ static bool	kill_philo(t_philo *philo)
 }
 
 /**
- * @brief Will return true when some philo died or if they eat enough.
- * @param table
+ * @brief Check if the dinner must be finished.
+ * Will return true when some philo died or if they eat enough.
+ * @param table structure
  * @return boolean - finished or not
  */
-bool	dinner_finished_reached(t_table *table)
+static bool	dinner_finished_reached(t_table *table)
 {
 	int		i;
 	bool	eat_enough;
@@ -66,7 +65,7 @@ bool	dinner_finished_reached(t_table *table)
 	while (i < table->nbr_philo)
 	{
 		pthread_mutex_lock(&table->philo[i]->general_meal_lock);
-		if (kill_philo(table->philo[i]))
+		if (kill_philo(table->philo[i]) == true)
 			return (true);
 		if (table->time_must_eat != -1)
 			if (table->philo[i]->nbr_meals_done < table->time_must_eat)
