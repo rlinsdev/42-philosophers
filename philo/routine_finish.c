@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 09:08:55 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 11:02:11 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ static bool	kill_philo(t_philo *philo)
 /**
  * @brief Will return true when some philo died or if they eat enough.
  * @param table
- * @return true
- * @return false
+ * @return boolean - finished or not
  */
 bool	dinner_finished_reached(t_table *table)
 {
