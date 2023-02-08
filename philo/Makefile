@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/07 15:59:46 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/08 09:12:56 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,13 +86,15 @@ run: $(NAME)
 #	@./$(NAME) 4 410 200 200 5
 #	@./$(NAME) 4 410 200 200
 #	@./$(NAME) 2 800 200 200 2
-	@./$(NAME) 2 60 60 60 
+	@./$(NAME) 2 60 60 60
 
 valgrind:
 	$(LEAK) ./$(NAME) 1 800 200 200
+#	$(LEAK) ./$(NAME) 2 60 60 60
 
 helgrind:
 	$(HEL_GRIND) ./$(NAME) 2 8100 2000 2000 1
 #	$(HEL_GRIND) ./$(NAME) 1 800 200 200
+#	$(HEL_GRIND) ./$(NAME) 2 60 60 60
 
 .PHONY: all run re clean fclean
