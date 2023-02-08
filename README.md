@@ -11,7 +11,8 @@
 
 
 # Philosophers:
-In this project, we must solve the classic problem *diner philosopher* problem
+In this project, we must solve the classic problem *diner philosopher* problem.
+Read the 42's subject for more details, or check the videos linked down below.
 
 
 
@@ -47,7 +48,7 @@ During that time, the philo needs hold two forks.
 
 
 ## Commands:
-```Shell
+```bash
 #Generate code in machine language
 $ gcc -S main.c
 $ ./philo 3 8100 2000 2000 2
@@ -66,13 +67,16 @@ $ ./philo 3 8100 2000 2000 2
 	``` -->
 * [Philosphers-42Project-Tester:](https://github.com/newlinuxbot/Philosphers-42Project-Tester)
 
-	```Bash
+### Result:
+![Test Result](imgs/test-result.png)
+
+```Bash
 	# in root folder:
 	$ git clone https://github.com/newlinuxbot/Philosphers-42Project-Tester.git
 	$ cd Philosphers-42Project-Tester
 	$  ./start.sh ../ 1
-	# Death test take more than 10 min. and crash in the middle
-	```
+	# How it's working with threads, the result must be different in some machines. The test was instable in my machine. Was successfully in 42 intranet.
+```
 
 ## Commands Sample:
 ```Bash
@@ -123,6 +127,3 @@ $ ./philo 4 310 200 100
 [Dining philosophers problem 4](https://www.youtube.com/watch?v=knJ4MHWPIwk)
 
 [Geeks for geeks](https://www.geeksforgeeks.org/multithreading-in-c/)
-
-
-
