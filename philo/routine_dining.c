@@ -72,7 +72,8 @@ static void	keep_eating(t_philo *philo)
 
 /**
  * @brief Handle the think function. Will check if is necessary log the action
- * and sleep the time passed in program
+ * and sleep the time passed in program.
+ * The first execution (unpaired values) just sleep until be call to eat.
  * @param philo Philo structure
  */
 static void	keep_thinking(t_philo *philo, bool log)
