@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:04:02 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/06 12:15:51 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:48:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Responsible to finish the philo dinning.
+ * Will join all threads and free all objects
+ * @param table Table structure
+ */
 static void	end_dinning(t_table *table)
 {
 	int	i;
@@ -54,8 +59,8 @@ static void	end_dinning(t_table *table)
 
 /**
  * @brief This method will start the dinning of philosophers.
- * Will start the threads to
- *
+ * Will start the threads (Nbr threads is the same nbr philo)
+ * Will start the thread to finish the dinner.
  * @param table
  */
 static bool	start_dinning(t_table *table)
