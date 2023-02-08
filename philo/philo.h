@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:02:00 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/08 10:51:03 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:59:35 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,14 +136,15 @@ int		datetime_now(void);
 int		get_time_ms(int start_dining);
 
 /**
- * @brief Log the status of current philo
+ * @brief Log the status of current philo. Will return the text in prompt with
+ * the action of the philo
  * @param philo Philosopher structure
  * @param status Status to log
  */
 void	log_status(t_philo *philo, t_state status);
 
 /**
- * @brief Sleep is not allowed. This wil simulate it.
+ * @brief Sleep is not allowed in this project. This will simulate it.
  * Handle the time to sleep the thread
  * @param table
  * @param duration Milliseconds to thread sleep
@@ -153,7 +154,6 @@ void	thread_sleep(t_table *table, time_t duration);
 /**
  * @brief Will free all memory allocation in program
  * @param table Table structure
- * @return void*
  */
 void	*free_table(t_table *table);
 
@@ -165,7 +165,7 @@ void	*free_table(t_table *table);
 bool	has_dinner_finish(t_table *table);
 
 /**
- * @brief Add Pretty header, when configured
+ * @brief Add Pretty header, when configured.
  */
 void	header_pretty(void);
 
