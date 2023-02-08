@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:59:16 by rlins             #+#    #+#             */
-/*   Updated: 2023/02/07 11:36:17 by rlins            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:08:55 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static bool	kill_philo(t_philo *philo)
 	{
 		log_status(philo, S_DEAD);
 		set_dinner_end_prop(philo->table, true);
+		pthread_mutex_unlock(&philo->general_meal_lock);
 		return (true);
 	}
 	return (false);
