@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/08 11:56:53 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/09 07:01:12 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR	=	obj
 OBJS	=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compilation
-CC = gcc -lpthread
+CC = gcc -pthread
 
 # Compilation flags
 # CFLAGS = -g -fsanitize=thread # Warning datarace. Don't work with valgrind
@@ -75,7 +75,7 @@ rebonus: fclean all
 run: $(NAME)
 #	@./$(NAME) 1 800 200 200
 #	@./$(NAME) 5 800 200 200
-#	@./$(NAME) 5 800 200 200 7
+	@./$(NAME) 5 800 200 200 7
 #	@./$(NAME) 5 800 200 200 7 | grep 'is eating'
 #	@./$(NAME) 4 410 200 200
 #	@./$(NAME) 4 310 200 100
@@ -86,7 +86,7 @@ run: $(NAME)
 #	@./$(NAME) 4 410 200 200 5
 #	@./$(NAME) 4 410 200 200
 #	@./$(NAME) 2 800 200 200 2
-	@./$(NAME) 2 60 60 60
+#	@./$(NAME) 2 60 60 60
 
 # I'm not sure if Valgrind without helgrind tool is a good idea to execute...
 valgrind:
