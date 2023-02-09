@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/09 07:06:19 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/09 07:32:06 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ GREEN 	= \033[0;32m
 RED 	= \033[0;31m
 
 OBJ_DIR	=	obj
-OBJS	=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compilation
 # CC = gcc -lpthread
