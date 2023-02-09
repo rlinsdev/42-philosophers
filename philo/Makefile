@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 08:04:25 by rlins             #+#    #+#              #
-#    Updated: 2023/02/09 07:01:12 by rlins            ###   ########.fr        #
+#    Updated: 2023/02/09 07:06:19 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,13 @@ OBJ_DIR	=	obj
 OBJS	=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compilation
+# CC = gcc -lpthread
 CC = gcc -pthread
 
 # Compilation flags
 # CFLAGS = -g -fsanitize=thread # Warning datarace. Don't work with valgrind
-CFLAGS = -g -Wall -Werror -Wextra -D PRETTY=1 #PRETTY log info
-# CFLAGS = -g -Wall -Werror -Wextra #Normal Execution
+# CFLAGS = -g -Wall -Werror -Wextra -D PRETTY=1 #PRETTY log info
+CFLAGS = -g -Wall -Werror -Wextra #Normal Execution
 
 #Check Leak memory
 LEAK = valgrind --leak-check=full --show-leak-kinds=all \
